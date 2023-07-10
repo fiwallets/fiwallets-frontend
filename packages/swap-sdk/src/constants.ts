@@ -14,6 +14,7 @@ export enum ChainId {
   ARBITRUM_ONE = 42161,
   ARBITRUM_GOERLI = 421613,
   LINEA_TESTNET = 59140,
+  FDAX = 2006,
 }
 
 export const ZERO_PERCENT = new Percent('0')
@@ -35,6 +36,7 @@ export const FACTORY_ADDRESS_MAP = {
   [ChainId.ZKSYNC]: '0x0F70cE1e2c0FB5FC3B67E13ed4F422fE82d832bD',
   [ChainId.ZKSYNC_TESTNET]: '0xA4370037e4C151449Fb7166DccB9FcF30B812baF',
   [ChainId.LINEA_TESTNET]: '0xB6FAfd4ADbCd21cF665909767e0eD0D05709abfB',
+  [ChainId.FDAX]: '0x0000000000000000000000000000000000000000',
 } as const satisfies Record<ChainId, Address>
 
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
@@ -53,6 +55,7 @@ export const INIT_CODE_HASH_MAP = {
   [ChainId.ZKSYNC]: '0x1cb011040b91cd937ddff2327f17c9690653b05b6506e830baadf2493468d657',
   [ChainId.ZKSYNC_TESTNET]: '0x0100045707a42494392b3558029b9869f865ff9df8f375dc1bf20b0555093f43',
   [ChainId.LINEA_TESTNET]: INIT_CODE_HASH_ETH,
+  [ChainId.FDAX]: INIT_CODE_HASH_ETH,
 } as const satisfies Record<ChainId, Hash>
 
 export const WETH9 = {
@@ -144,6 +147,14 @@ export const WETH9 = {
     'Wrapped Ether',
     'https://weth.io'
   ),
+  [ChainId.FDAX]: new ERC20Token(
+    ChainId.FDAX,
+    '0x88435653AFEBE9806cfF334f2F04A1fdD5D4eb63',
+    18,
+    'WETH',
+    'Wrapped Ether',
+    'https://weth.io'
+  ),
 }
 
 export const WBNB = {
@@ -171,6 +182,25 @@ export const WBNB = {
     'Wrapped BNB',
     'https://www.binance.org'
   ),
+  [ChainId.FDAX]: new ERC20Token(
+    ChainId.FDAX,
+    '0xBa3CDda6d6A9806D471762164E2f03aD62b894C5',
+    18,
+    'WBNB',
+    'Wrapped BNB',
+    'https://www.binance.org'
+  ),
+}
+
+export const WFDAX = {
+  [ChainId.FDAX]: new ERC20Token(
+    ChainId.FDAX,
+    '0xBa3CDda6d6A9806D471762164E2f03aD62b894C5',
+    18,
+    'WBNB',
+    'Wrapped BNB',
+    'https://www.binance.org'
+  ),
 }
 
 export const WNATIVE = {
@@ -185,9 +215,11 @@ export const WNATIVE = {
   [ChainId.ZKSYNC]: WETH9[ChainId.ZKSYNC],
   [ChainId.ZKSYNC_TESTNET]: WETH9[ChainId.ZKSYNC_TESTNET],
   [ChainId.LINEA_TESTNET]: WETH9[ChainId.LINEA_TESTNET],
+  [ChainId.FDAX]: WFDAX[ChainId.FDAX],
 } satisfies Record<ChainId, ERC20Token>
 
 const ETHER = { name: 'Ether', symbol: 'ETH', decimals: 18 } as const
+const FDAX = { name: 'FDX', symbol: 'FDX', decimals: 18 } as const
 
 export const NATIVE = {
   [ChainId.ETHEREUM]: ETHER,
@@ -213,6 +245,7 @@ export const NATIVE = {
   [ChainId.ZKSYNC]: ETHER,
   [ChainId.ZKSYNC_TESTNET]: ETHER,
   [ChainId.LINEA_TESTNET]: ETHER,
+  [ChainId.FDAX]: FDAX,
 } satisfies Record<
   ChainId,
   {
