@@ -2,7 +2,7 @@ import { ChainId } from '@pancakeswap/sdk'
 import { createPublicClient, http, PublicClient } from 'viem'
 import { bsc, bscTestnet, goerli, mainnet } from 'viem/chains'
 
-const requireCheck = [ETH_NODE, GOERLI_NODE, BSC_NODE, BSC_TESTNET_NODE]
+const requireCheck = [ETH_NODE, GOERLI_NODE, BSC_NODE, BSC_TESTNET_NODE, FDAX_NODE]
 requireCheck.forEach((node) => {
   if (!node) {
     throw new Error('Missing env var')
@@ -48,6 +48,41 @@ const goerliClient = createPublicClient({
     },
   },
 })
+declare const fdax: {
+  readonly id: 2006;
+  readonly name: "FDAX Smart Chain";
+  readonly network: "fdax";
+  readonly nativeCurrency: {
+      readonly decimals: 18;
+      readonly name: "FDX";
+      readonly symbol: "FDX";
+  };
+  readonly rpcUrls: {
+      readonly default: {
+          readonly http: readonly ["https://mainnet-rpc.5dax.com"];
+      };
+      readonly public: {
+          readonly http: readonly ["https://mainnet-rpc.5dax.com"];
+      };
+  };
+  readonly blockExplorers: {
+      readonly default: {
+          readonly name: "FdaxScan";
+          readonly url: "https://scan.5dax.com";
+      };
+  };
+  readonly testnet: false;
+};
+
+const fdaxClient = createPublicClient({
+  chain: fdax,
+  transport: http(FDAX_NODE),
+  batch: {
+    multicall: {
+      batchSize: 1024 * 200,
+    },
+  },
+})
 
 export const viemProviders = ({ chainId }: { chainId?: ChainId }): PublicClient => {
   switch (chainId) {
@@ -59,6 +94,8 @@ export const viemProviders = ({ chainId }: { chainId?: ChainId }): PublicClient 
       return bscTestnetClient
     case ChainId.GOERLI:
       return goerliClient
+    case ChainId.FDAX:
+      return fdaxClient
     default:
       return bscClient
   }

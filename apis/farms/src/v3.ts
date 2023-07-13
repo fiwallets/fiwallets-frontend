@@ -27,7 +27,7 @@ export const V3_SUBGRAPH_CLIENTS = {
 
 } satisfies Record<FarmSupportedChainId, GraphQLClient>
 
-const zChainId = z.enum(['56', '1', '5', '97'])
+const zChainId = z.enum(['56', '1', '5', '97','2006'])
 
 const zAddress = z.string().regex(/^0x[a-fA-F0-9]{40}$/)
 

@@ -6,7 +6,6 @@ import {
   USDC,
   USDT,
   WBTC_ETH,
-  WBTC_FDAX,
   arbitrumTokens,
   arbitrumGoerliTokens,
   ethereumTokens,
@@ -16,7 +15,6 @@ import {
   zkSyncTestnetTokens,
   lineaTestnetTokens,
   fdaxTokens,
-  CAKE_FDAX
 } from '@pancakeswap/tokens'
 
 import { ChainMap, ChainTokenList } from '../types'

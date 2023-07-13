@@ -1,43 +1,42 @@
 import { fdaxTokens } from '@pancakeswap/tokens'
-import { FeeAmount, Pool } from '@pancakeswap/v3-sdk'
+import { FeeAmount } from '@pancakeswap/v3-sdk'
 import { getAddress } from 'viem'
-import { CAKE_BNB_LP_MAINNET } from './common'
 import { defineFarmV3Configs } from '../src/defineFarmV3Configs'
 import { SerializedFarmConfig } from '..'
 
 export const farmsV3 = defineFarmV3Configs([
   {
     pid: 1,
-    token0: fdaxTokens.cake, //0x4B96c9c245E3b852Bc071f53C81f0412eCdD26ac
-    token1: fdaxTokens.wfdx, //0xa27a128dD70479FD2B37662223C6523F10eBc21A
+    token0: fdaxTokens.cake,
+    token1: fdaxTokens.wfdx,
     lpAddress: '0xe644ee79524e53cdb5622582a81cd28322489cf3',
     feeAmount: FeeAmount.MEDIUM,
   },
   {
     pid: 2,
-    token0: fdaxTokens.cake, //0x4B96c9c245E3b852Bc071f53C81f0412eCdD26ac
-    token1: fdaxTokens.busd, //0xe5e8ca35b7bf7045288bf6731f071f9f98c5ce47
+    token0: fdaxTokens.cake,
+    token1: fdaxTokens.busd,
     lpAddress: '0x124b482daaf3e0c1554441377b8f97453781312f',
     feeAmount: FeeAmount.MEDIUM,
   },
   {
     pid: 3,
-    token0: fdaxTokens.cake, //0x4B96c9c245E3b852Bc071f53C81f0412eCdD26ac
-    token1: fdaxTokens.usdt, //0x3f851192d8b2d8dadc7c2b49f7a9fa27cdcea680
+    token0: fdaxTokens.cake,
+    token1: fdaxTokens.usdt,
     lpAddress: '0xb8bb7ddd794d86d547a830c3deb05c5554ee97bd',
     feeAmount: FeeAmount.MEDIUM,
   },
   {
     pid: 4,
-    token0: fdaxTokens.wfdx, //0xa27a128dD70479FD2B37662223C6523F10eBc21A
-    token1: fdaxTokens.busd, //0xe5e8ca35b7bf7045288bf6731f071f9f98c5ce47
+    token0: fdaxTokens.wfdx,
+    token1: fdaxTokens.busd,
     lpAddress: '0x3582fc0c363d5a4c9bbb1251252afafe5e7a70a5',
     feeAmount: FeeAmount.LOW,
   },
   {
     pid: 5,
-    token0: fdaxTokens.usdt, //0x3f851192d8b2d8dadc7c2b49f7a9fa27cdcea680
-    token1: fdaxTokens.wfdx, //0xa27a128dD70479FD2B37662223C6523F10eBc21A
+    token0: fdaxTokens.usdt,
+    token1: fdaxTokens.wfdx,
     lpAddress: '0x15900188ef55317fa1d9f3c9a57fdd01e07dcd72',
     feeAmount: FeeAmount.LOW,
   },

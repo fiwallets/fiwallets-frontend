@@ -13,7 +13,7 @@ export const fdaxTokens = {
     'FDX',
     'https://www.5dax.com/',
   ), 
-  eth: WETH9[ChainId.FDAX], //ETH
+  eth: WETH9[ChainId.FDAX],
   usdt: USDT[ChainId.FDAX],
   wbtc: WBTC_FDAX,
   cake: CAKE[ChainId.FDAX],
