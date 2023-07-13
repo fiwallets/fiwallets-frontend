@@ -25,8 +25,10 @@ export const V3_BSC_INFO_CLIENT = `https://open-platform.nodereal.io/${
 }/pancakeswap-v3/graphql`
 
 export const INFO_CLIENT_ETH = 'https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth'
+export const INFO_CLIENT_FDAX = 'https://api.miexx.com:8001/subgraphs/name/miexxswap/exhange-fdax'
 export const BLOCKS_CLIENT = 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks'
 export const BLOCKS_CLIENT_ETH = 'https://api.thegraph.com/subgraphs/name/blocklytics/ethereum-blocks'
+export const BLOCKS_CLIENT_FDAX = 'https://api.miexx.com/subgraphs/name/miexxswap/blocks'
 export const STABLESWAP_SUBGRAPH_CLIENT = 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap'
 export const GRAPH_API_NFTMARKET = 'https://api.thegraph.com/subgraphs/name/pancakeswap/nft-market'
 export const GRAPH_HEALTH = 'https://api.thegraph.com/index-node/graphql'
@@ -46,11 +48,13 @@ export const INFO_CLIENT_WITH_CHAIN = {
   [ChainId.POLYGON_ZKEVM]: 'https://api.studio.thegraph.com/query/45376/exchange-v2-polygon-zkevm/version/latest',
   [ChainId.LINEA_TESTNET]: 'https://thegraph.goerli.zkevm.consensys.net/subgraphs/name/pancakeswap/exhange-eth/',
   [ChainId.ARBITRUM_ONE]: 'https://thegraph.com/hosted-service/subgraph/chef-jojo/exchange-v2-arb',
+  [ChainId.FDAX]: INFO_CLIENT_FDAX,
 }
 
 export const BLOCKS_CLIENT_WITH_CHAIN = {
   [ChainId.BSC]: BLOCKS_CLIENT,
   [ChainId.ETHEREUM]: BLOCKS_CLIENT_ETH,
+  [ChainId.FDAX]: BLOCKS_CLIENT_FDAX,
 }
 
 export const ASSET_CDN = 'https://assets.pancakeswap.finance'
@@ -69,6 +73,7 @@ export const V3_SUBGRAPH_URLS = {
   [ChainId.ZKSYNC_TESTNET]: 'https://api.studio.thegraph.com/query/45376/exchange-v3-zksync-testnet/v0.0.1',
   [ChainId.LINEA_TESTNET]:
     'https://thegraph.goerli.zkevm.consensys.net/subgraphs/name/pancakeswap/exchange-v3-linea-goerli',
+  [ChainId.FDAX]: `https://api.miexx.com/subgraphs/name/pancakeswap/exchange-v3-fdax`,
 } satisfies Record<ChainId, string | null>
 
 export const TRADING_REWARD_API = 'https://pancake-trading-fee-rebate-api.pancakeswap.com/api/v1'

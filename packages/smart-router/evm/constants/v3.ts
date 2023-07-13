@@ -20,6 +20,7 @@ export const MIXED_ROUTE_QUOTER_ADDRESSES = {
   [ChainId.ZKSYNC]: '0x',
   [ChainId.ZKSYNC_TESTNET]: '0x5d2D9b1B04735DFECF48E6be1A7F391e7071DDc9',
   [ChainId.LINEA_TESTNET]: '0x7d3ed219e45637Cfa77b1a634d0489a2950d1B7F',
+  [ChainId.FDAX]: '0xFF64E44FC76934d291d4490C2e580DC85f81160F',
 } as const satisfies Record<ChainId, Address>
 
 export const V3_QUOTER_ADDRESSES = {
@@ -35,4 +36,6 @@ export const V3_QUOTER_ADDRESSES = {
   [ChainId.ZKSYNC]: '0x',
   [ChainId.ZKSYNC_TESTNET]: '0x42929984eBFC7C3AF4e7dA2e33C9dEe593eB0e4F',
   [ChainId.LINEA_TESTNET]: '0x669254936caE83bE34008BdFdeeA63C902497B31',
+  // QuoterV2
+  [ChainId.FDAX]: '0xa1E1E888F5530cF039fCc68b16883057f0FC1aAF',
 } as const satisfies Record<ChainId, Address>

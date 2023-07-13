@@ -6,6 +6,7 @@ import {
   USDC,
   USDT,
   WBTC_ETH,
+  WBTC_FDAX,
   arbitrumTokens,
   arbitrumGoerliTokens,
   ethereumTokens,
@@ -14,6 +15,8 @@ import {
   zksyncTokens,
   zkSyncTestnetTokens,
   lineaTestnetTokens,
+  fdaxTokens,
+  CAKE_FDAX
 } from '@pancakeswap/tokens'
 
 import { ChainMap, ChainTokenList } from '../types'
@@ -31,6 +34,7 @@ export const SMART_ROUTER_ADDRESSES = {
   [ChainId.ZKSYNC]: '',
   [ChainId.ZKSYNC_TESTNET]: '0x2CecA0100bB12F3Ee164D260b058281809C7e1E8',
   [ChainId.LINEA_TESTNET]: '0x21d809FB4052bb1807cfe2418bA638d72F4aEf87',
+  [ChainId.FDAX]: '0x167D155d036a34FAA6C1FBC7f673B9e5c2bF81C4',
 } as const satisfies Record<ChainId, string>
 
 export const V2_ROUTER_ADDRESS: ChainMap<string> = {
@@ -45,6 +49,8 @@ export const V2_ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.ZKSYNC]: '0xbFc9a73c77d5D8cE972FBa2806Ac18e7d913Deb6',
   [ChainId.ZKSYNC_TESTNET]: '0x8A1fB895Ac009Bdc2e773d117695F21C1BF13D99',
   [ChainId.LINEA_TESTNET]: '0xD7A304138D50C125733d1fE8a2041199E4944Aa1',
+  [ChainId.FDAX]: '0x507e3B2DD4f8e32f667ed23e18fe82232B934D7e',
+
 }
 
 export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
@@ -59,6 +65,7 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
   [ChainId.ZKSYNC]: '',
   [ChainId.ZKSYNC_TESTNET]: '',
   [ChainId.LINEA_TESTNET]: '',
+  [ChainId.FDAX]: '',
 }
 
 // used to construct intermediary pairs for trading
@@ -82,6 +89,14 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.ZKSYNC]: [zksyncTokens.usdc, zksyncTokens.weth],
   [ChainId.ZKSYNC_TESTNET]: [zkSyncTestnetTokens.usdc, zkSyncTestnetTokens.weth],
   [ChainId.LINEA_TESTNET]: [lineaTestnetTokens.usdc, lineaTestnetTokens.weth],
+  [ChainId.FDAX]:  [
+    fdaxTokens.wfdx,
+    fdaxTokens.cake,
+    fdaxTokens.busd,
+    fdaxTokens.usdt,
+    fdaxTokens.wbtc,
+    fdaxTokens.eth,
+  ],
 }
 
 /**

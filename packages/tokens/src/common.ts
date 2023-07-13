@@ -18,6 +18,42 @@ export const CAKE_TESTNET = new ERC20Token(
   'https://pancakeswap.finance/',
 )
 
+// FDAX
+export const CAKE_FDAX = new ERC20Token(
+  ChainId.FDAX,
+  '0x4B96c9c245E3b852Bc071f53C81f0412eCdD26ac',
+  18,
+  'MIEXX',
+  'MiexxSwap Token',
+  'https://pancakeswap.finance/',
+)
+
+export const USDT_FDAX = new ERC20Token(
+  ChainId.FDAX,
+  '0x3f851192d8b2d8dadc7c2b49f7a9fa27cdcea680',
+  18,
+  'USDT',
+  'Tether USD',
+  'https://tether.to/',
+)
+
+export const BUSD_FDAX = new ERC20Token(
+  ChainId.FDAX,
+  '0xe5e8ca35b7bf7045288bf6731f071f9f98c5ce47',
+  18,
+  'BUSD',
+  'Binance USD',
+  'https://www.paxos.com/busd/',
+)
+
+export const WBTC_FDAX = new ERC20Token(
+  ChainId.FDAX,
+  '0x51db507c3aFAD70b944Bd9d3b11822a515bbAD82',
+  8,
+  'WBTC',
+  'Wrapped BTC',
+)
+
 export const USDC_BSC = new ERC20Token(
   ChainId.BSC,
   '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
@@ -111,6 +147,7 @@ export const BUSD = {
   [ChainId.GOERLI]: BUSD_GOERLI,
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
+  [ChainId.FDAX]: BUSD_FDAX,
   [ChainId.ZKSYNC]: new ERC20Token(
     ChainId.ZKSYNC,
     '0x2039bb4116B4EFc145Ec4f0e2eA75012D6C0f181',
@@ -139,6 +176,7 @@ export const CAKE = {
   ),
   [ChainId.BSC]: CAKE_MAINNET,
   [ChainId.BSC_TESTNET]: CAKE_TESTNET,
+  [ChainId.FDAX]: CAKE_FDAX,
 }
 
 export const USDC = {
@@ -186,6 +224,7 @@ export const USDC = {
 
 export const USDT = {
   [ChainId.BSC]: USDT_BSC,
+  [ChainId.FDAX]: USDT_FDAX,
   [ChainId.ETHEREUM]: USDT_ETH,
   [ChainId.ARBITRUM_ONE]: new ERC20Token(
     ChainId.ARBITRUM_ONE,
@@ -218,6 +257,7 @@ export const WBTC_ETH = new ERC20Token(
   'Wrapped BTC',
 )
 
+
 export const STABLE_COIN = {
   [ChainId.ETHEREUM]: USDT[ChainId.ETHEREUM],
   [ChainId.GOERLI]: USDC[ChainId.GOERLI],
@@ -230,4 +270,5 @@ export const STABLE_COIN = {
   [ChainId.POLYGON_ZKEVM]: USDT[ChainId.POLYGON_ZKEVM],
   [ChainId.POLYGON_ZKEVM_TESTNET]: USDT[ChainId.POLYGON_ZKEVM_TESTNET],
   [ChainId.LINEA_TESTNET]: USDC[ChainId.LINEA_TESTNET],
+  [ChainId.FDAX]: USDT[ChainId.FDAX],
 } satisfies Record<ChainId, ERC20Token>

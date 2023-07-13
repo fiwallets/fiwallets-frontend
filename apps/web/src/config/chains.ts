@@ -26,6 +26,7 @@ export const CHAIN_QUERY_NAME = {
   [ChainId.ZKSYNC]: 'zkSync',
   [ChainId.ZKSYNC_TESTNET]: 'zkSyncTestnet',
   [ChainId.LINEA_TESTNET]: 'lineaTestnet',
+  [ChainId.FDAX]: 'fdax',
 } as const satisfies Record<ChainId, string>
 
 const CHAIN_QUERY_NAME_TO_ID = Object.entries(CHAIN_QUERY_NAME).reduce((acc, [chainId, chainName]) => {
@@ -74,6 +75,41 @@ const bsc = {
 //     },
 //   },
 // } as const satisfies Chain
+
+const fdax = {
+  id: 2006,
+  name: "FDAX Smart Chain",
+  network: "fdax",
+  nativeCurrency: {
+      decimals: 18,
+      name: "FDX",
+      symbol: "FDX",
+  },
+  rpcUrls: {
+      default: {
+          http:  ["https://mainnet-rpc.5dax.com"],
+     },
+      public: {
+          http:  ["https://mainnet-rpc.5dax.com"],
+     },
+  },
+  blockExplorers: {
+      etherscan: {
+          name: "FdaxScan",
+          url: "https://scan.5dax.com",
+     },
+      default: {
+          name: "FdaxScan",
+          url: "https://scan.5dax.com",
+     },
+  },
+  contracts: {
+      multicall3: {
+          address: "0x85C163aAeb2ecfA61Ea6D6f1b525e091A94aDB33",
+          blockCreated: 1651639,
+     },
+  },
+}
 
 const polygonZkEvm = {
   ...polygonZkEvm_,
@@ -133,6 +169,7 @@ export const CHAINS = [
   polygonZkEvm,
   polygonZkEvmTestnet,
   lineaTestnet,
+  fdax,
   // arbitrumGoerli,
   // arbitrum,
 ]

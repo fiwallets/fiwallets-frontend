@@ -15,6 +15,7 @@ export const CHAIN_ID_TO_CHAIN_NAME = {
   [ChainId.ETHEREUM]: 'ethereum',
   [ChainId.GOERLI]: 'ethereum',
   [ChainId.BSC_TESTNET]: 'bsc',
+  [ChainId.FDAX]: 'fdax',
 } satisfies Record<FarmSupportedChainId, string>
 
 export const priceHelperTokens = {
@@ -41,4 +42,5 @@ export const DEFAULT_COMMON_PRICE: Record<FarmSupportedChainId, CommonPrice> = {
     [bscTestnetTokens.busd.address]: '1',
     [bscTestnetTokens.usdc.address]: '1',
   },
+  [ChainId.FDAX]: {},
 }
