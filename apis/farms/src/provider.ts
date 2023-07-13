@@ -48,31 +48,31 @@ const goerliClient = createPublicClient({
     },
   },
 })
-declare const fdax: {
-  readonly id: 2006;
-  readonly name: "FDAX Smart Chain";
-  readonly network: "fdax";
-  readonly nativeCurrency: {
-      readonly decimals: 18;
-      readonly name: "FDX";
-      readonly symbol: "FDX";
-  };
-  readonly rpcUrls: {
-      readonly default: {
-          readonly http: readonly ["https://mainnet-rpc.5dax.com"];
-      };
-      readonly public: {
-          readonly http: readonly ["https://mainnet-rpc.5dax.com"];
-      };
-  };
-  readonly blockExplorers: {
-      readonly default: {
-          readonly name: "FdaxScan";
-          readonly url: "https://scan.5dax.com";
-      };
-  };
-  readonly testnet: false;
-};
+const fdax = {
+   id: 2006,
+   name: "FDAX Smart Chain",
+   network: "fdax",
+   nativeCurrency: {
+       decimals: 18,
+       name: "FDX",
+       symbol: "FDX",
+  },
+   rpcUrls: {
+       default: {
+           http:  ["https://mainnet-rpc.5dax.com"],
+      },
+       public: {
+           http:  ["https://mainnet-rpc.5dax.com"],
+      },
+  },
+   blockExplorers: {
+       default: {
+           name: "FdaxScan",
+           url: "https://scan.5dax.com",
+      },
+  },
+  testnet: false,
+}
 
 const fdaxClient = createPublicClient({
   chain: fdax,

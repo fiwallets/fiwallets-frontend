@@ -25,7 +25,6 @@ const BLOCKS_CLIENT_WITH_CHAIN = {
   [ChainId.BSC_TESTNET]: '',
   [ChainId.GOERLI]: '',
   [ChainId.FDAX]: 'https://api.miexx.com/subgraphs/name/miexxswap/blocks',
-
 }
 
 const INFO_CLIENT_WITH_CHAIN = {
