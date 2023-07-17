@@ -30,13 +30,15 @@ export function createFarmFetcher(provider: ({ chainId }: { chainId: number }) =
     } & Pick<FetchFarmsParams, 'chainId' | 'farms'>,
   ) => {
     const { isTestnet, farms, chainId } = params
-    const masterChefAddress = isTestnet ? masterChefAddresses[ChainId.BSC_TESTNET] : masterChefAddresses[ChainId.BSC]
+    const masterChefAddress = isTestnet ? masterChefAddresses[ChainId.FDAX] : masterChefAddresses[ChainId.FDAX]
+    // const masterChefAddress = masterChefAddresses[chainId as keyof typeof masterChefAddresses];
     const { poolLength, totalRegularAllocPoint, totalSpecialAllocPoint, cakePerBlock } = await fetchMasterChefV2Data({
       isTestnet,
       provider,
       masterChefAddress,
     })
     const regularCakePerBlock = formatEther(cakePerBlock)
+
     const farmsWithPrice = await farmV2FetchFarms({
       provider,
       masterChefAddress,
@@ -59,7 +61,7 @@ export function createFarmFetcher(provider: ({ chainId }: { chainId: number }) =
     fetchFarms,
     isChainSupported: (chainId: number) => supportedChainIdV2.includes(chainId),
     supportedChainId: supportedChainIdV2,
-    isTestnet: (chainId: number) => ![ChainId.BSC, ChainId.ETHEREUM].includes(chainId),
+    isTestnet: (chainId: number) => ![ChainId.BSC, ChainId.FDAX].includes(chainId),
   }
 }
 

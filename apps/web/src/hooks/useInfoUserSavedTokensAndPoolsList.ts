@@ -25,10 +25,6 @@ const defaultTokenAndPoolList: TokenAndPoolList = {
     tokens: [],
     pools: [],
   },
-  [ChainId.ARBITRUM_GOERLI]: {
-    tokens: [],
-    pools: [],
-  },
   [ChainId.POLYGON_ZKEVM]: {
     tokens: [],
     pools: [],
@@ -46,6 +42,10 @@ const defaultTokenAndPoolList: TokenAndPoolList = {
     pools: [],
   },
   [ChainId.LINEA_TESTNET]: {
+    tokens: [],
+    pools: [],
+  },
+  [ChainId.FDAX]: {
     tokens: [],
     pools: [],
   },

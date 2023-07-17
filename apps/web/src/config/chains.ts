@@ -76,7 +76,7 @@ const bsc = {
 //   },
 // } as const satisfies Chain
 
-const fdax = {
+export const fdax = {
   id: 2006,
   name: "FDAX Smart Chain",
   network: "fdax",
@@ -109,7 +109,7 @@ const fdax = {
           blockCreated: 1651639,
      },
   },
-}
+} as const satisfies Chain
 
 const polygonZkEvm = {
   ...polygonZkEvm_,

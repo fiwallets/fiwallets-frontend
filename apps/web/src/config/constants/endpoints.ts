@@ -25,7 +25,7 @@ export const V3_BSC_INFO_CLIENT = `https://open-platform.nodereal.io/${
 }/pancakeswap-v3/graphql`
 
 export const INFO_CLIENT_ETH = 'https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth'
-export const INFO_CLIENT_FDAX = 'https://api.miexx.com:8001/subgraphs/name/miexxswap/exhange-fdax'
+export const INFO_CLIENT_FDAX = 'https://proxy-worker-dev.luannguyen-18c.workers.dev/exhange-fdax'
 export const BLOCKS_CLIENT = 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks'
 export const BLOCKS_CLIENT_ETH = 'https://api.thegraph.com/subgraphs/name/blocklytics/ethereum-blocks'
 export const BLOCKS_CLIENT_FDAX = 'https://api.miexx.com/subgraphs/name/miexxswap/blocks'
@@ -66,20 +66,20 @@ export const V3_SUBGRAPH_URLS = {
   [ChainId.BSC_TESTNET]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-v3-chapel',
   // TODO: new chains
   [ChainId.ARBITRUM_ONE]: 'https://thegraph.com/hosted-service/subgraph/chef-jojo/exchange-v3-arb',
-  [ChainId.ARBITRUM_GOERLI]: 'https://api.thegraph.com/subgraphs/name/chef-jojo/exhange-v3-arb-goerli',
   [ChainId.POLYGON_ZKEVM]: 'https://api.studio.thegraph.com/query/45376/exchange-v3-polygon-zkevm/v0.0.0',
   [ChainId.POLYGON_ZKEVM_TESTNET]: null,
   [ChainId.ZKSYNC]: null,
   [ChainId.ZKSYNC_TESTNET]: 'https://api.studio.thegraph.com/query/45376/exchange-v3-zksync-testnet/v0.0.1',
   [ChainId.LINEA_TESTNET]:
     'https://thegraph.goerli.zkevm.consensys.net/subgraphs/name/pancakeswap/exchange-v3-linea-goerli',
-  [ChainId.FDAX]: `https://api.miexx.com/subgraphs/name/pancakeswap/exchange-v3-fdax`,
+  [ChainId.FDAX]: `https://api.miexx.com/subgraphs/name/miexxswap/exchange-v3-fdax`,
 } satisfies Record<ChainId, string | null>
 
 export const TRADING_REWARD_API = 'https://pancake-trading-fee-rebate-api.pancakeswap.com/api/v1'
 
+
 export const QUOTING_API = `${process.env.NEXT_PUBLIC_QUOTING_API}/v0/quote`
 
-export const FARMS_API = 'https://farms-dev.luannguyen-18c.workers.dev'
+export const FARMS_API = 'https://routing-dev.luannguyen-18c.workers.dev'
 
 export const MERCURYO_WIDGET_ID = process.env.NEXT_PUBLIC_MERCURYO_WIDGET_ID || '95a003f2-354a-4396-828a-1126d56e4e13'

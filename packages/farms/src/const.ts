@@ -12,6 +12,9 @@ export const masterChefAddresses = {
   [ChainId.BSC_TESTNET]: '0xB4A466911556e39210a6bB2FaECBB59E4eB7E43d',
   [ChainId.BSC]: '0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652',
   [ChainId.FDAX]: '0x9a9F76bcf72600831BB0EA181338B1eE7eB9c285',
+  [ChainId.ETHEREUM]: '',
+  [ChainId.GOERLI]: '',
+
 } as const
 
 export const masterChefV3Addresses = {

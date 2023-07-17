@@ -1,4 +1,4 @@
-import { Address, PublicClient, formatUnits } from 'viem'
+import { Address, PublicClient, formatUnits} from 'viem'
 import BN from 'bignumber.js'
 import { BIG_TWO, BIG_ZERO } from '@pancakeswap/utils/bigNumber'
 import { ChainId } from '@pancakeswap/sdk'
@@ -8,6 +8,7 @@ import { fetchStableFarmData } from './fetchStableFarmData'
 import { isStableFarm, SerializedFarmConfig } from '../types'
 import { getFullDecimalMultiplier } from './getFullDecimalMultiplier'
 import { FarmSupportedChainId, supportedChainIdV2 } from '../const'
+
 
 const evmNativeStableLpMap: Record<
   FarmSupportedChainId,
@@ -36,6 +37,11 @@ const evmNativeStableLpMap: Record<
     address: '0x4E96D2e92680Ca65D58A0e2eB5bd1c0f44cAB897',
     wNative: 'WBNB',
     stable: 'BUSD',
+  },
+  [ChainId.FDAX]: {
+    address: '0xa27a128dD70479FD2B37662223C6523F10eBc21A',
+    wNative: 'WFDX',
+    stable: 'FDX',
   },
 }
 
@@ -199,7 +205,7 @@ export const fetchMasterChefData = async (
     const masterChefCalls = farms.map((farm) => masterChefFarmCalls(farm, masterChefAddress))
     const masterChefAggregatedCalls = masterChefCalls.filter(notEmpty)
 
-    const chainId = isTestnet ? ChainId.BSC_TESTNET : ChainId.BSC
+    const chainId = isTestnet ? ChainId.FDAX : ChainId.FDAX
     const masterChefMultiCallResult = await provider({ chainId }).multicall({
       contracts: masterChefAggregatedCalls,
       allowFailure: false,
@@ -236,7 +242,7 @@ export const fetchMasterChefV2Data = async ({
   masterChefAddress: Address
 }) => {
   try {
-    const chainId = isTestnet ? ChainId.BSC_TESTNET : ChainId.BSC
+    const chainId = isTestnet ? ChainId.FDAX : ChainId.FDAX
     const [poolLength, totalRegularAllocPoint, totalSpecialAllocPoint, cakePerBlock] = await provider({
       chainId,
     }).multicall({
@@ -264,6 +270,8 @@ export const fetchMasterChefV2Data = async ({
         },
       ],
       allowFailure: false,
+      multicallAddress: '0x85C163aAeb2ecfA61Ea6D6f1b525e091A94aDB33' ,
+
     })
 
     return {

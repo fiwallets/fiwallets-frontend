@@ -1,4 +1,4 @@
-import { createPublicClient, PublicClient, http, getContract, Address } from 'viem'
+import { createPublicClient, PublicClient, http, getContract, Address, Chain } from 'viem'
 import { bsc, bscTestnet, mainnet, goerli } from 'viem/chains'
 import { CurrencyAmount, Token } from '@pancakeswap/swap-sdk-core'
 import invariant from 'tiny-invariant'
@@ -8,13 +8,47 @@ import { erc20ABI } from './abis/ERC20'
 import { pancakePairV2ABI } from './abis/IPancakePair'
 
 let TOKEN_DECIMALS_CACHE: { [chainId: number]: { [address: string]: number } } = {
-  [ChainId.BSC]: {},
+  [ChainId.FDAX]: {},
 }
-
+export const fdax = {
+  id: 2006,
+  name: "FDAX Smart Chain",
+  network: "fdax",
+  nativeCurrency: {
+      decimals: 18,
+      name: "FDX",
+      symbol: "FDX",
+  },
+  rpcUrls: {
+      default: {
+          http:  ["https://mainnet-rpc.5dax.com"],
+     },
+      public: {
+          http:  ["https://mainnet-rpc.5dax.com"],
+     },
+  },
+  blockExplorers: {
+      etherscan: {
+          name: "FdaxScan",
+          url: "https://scan.5dax.com",
+     },
+      default: {
+          name: "FdaxScan",
+          url: "https://scan.5dax.com",
+     },
+  },
+  contracts: {
+      multicall3: {
+          address: "0x85C163aAeb2ecfA61Ea6D6f1b525e091A94aDB33" as `0x${string}`,
+          blockCreated: 1651639,
+     },
+  },
+} as const satisfies Chain
 const ethClient = createPublicClient({ chain: mainnet, transport: http() })
 const bscClient = createPublicClient({ chain: bsc, transport: http() })
 const bscTestnetClient = createPublicClient({ chain: bscTestnet, transport: http() })
 const goerliClient = createPublicClient({ chain: goerli, transport: http() })
+const fdaxClient = createPublicClient({ chain: fdax, transport: http() })
 
 const getDefaultClient = (chainId: ChainId): PublicClient => {
   switch (chainId) {
@@ -26,8 +60,10 @@ const getDefaultClient = (chainId: ChainId): PublicClient => {
       return bscTestnetClient
     case ChainId.GOERLI:
       return goerliClient
+    case ChainId.FDAX:
+      return fdaxClient 
     default:
-      return bscClient
+      return fdaxClient
   }
 }
 

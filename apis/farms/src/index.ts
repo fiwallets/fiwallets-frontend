@@ -14,10 +14,11 @@ import { Router } from 'itty-router'
 import { error, json, missing } from 'itty-router-extras'
 import { wrapCorsHeader, handleCors, CORS_ALLOW } from '@pancakeswap/worker-utils'
 import BigNumber from 'bignumber.js'
-import { fetchCakePrice, saveFarms, saveLPsAPR } from './handler'
+import { fetchCakePrice, saveFarms, saveLPsAPR, getCakePrice } from './handler'
 import { farmFetcher, requireChainId } from './helper'
 import { handler as v3Handler } from './v3'
 import { FarmKV } from './kv'
+import BN from 'bignumber.js'
 
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -31,7 +32,9 @@ router.get('/price/cake', async (_, event) => {
   const cacheResponse = await cache.match(event.request)
   let response
   if (!cacheResponse) {
-    const price = await fetchCakePrice()
+    // const price = await fetchCakePrice()
+    const cakeBusdPrice = await getCakePrice(false)
+    const price = new BN(cakeBusdPrice.toSignificant(3))
     response = json(
       { price, updatedAt: new Date().toISOString() },
       {
@@ -63,6 +66,7 @@ router.get('/apr', async ({ query }) => {
 
 router.get('/:chainId', async ({ params }, event) => {
   const err = requireChainId(params)
+
   if (err) return err
   const { chainId } = params!
 
@@ -74,7 +78,6 @@ router.get('/:chainId', async ({ params }, event) => {
     }
     try {
       const savedFarms = await saveFarms(+chainId, event)
-
       return json(savedFarms, {
         headers: {
           'Cache-Control': 'public, max-age=60, s-maxage=60',
@@ -85,7 +88,6 @@ router.get('/:chainId', async ({ params }, event) => {
       return error(500, 'Fetch Farms error')
     }
   }
-
   return json(cached, {
     headers: {
       'Cache-Control': 'public, max-age=60, s-maxage=60',

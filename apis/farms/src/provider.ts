@@ -1,8 +1,42 @@
 import { ChainId } from '@pancakeswap/sdk'
-import { createPublicClient, http, PublicClient } from 'viem'
-import { bsc, bscTestnet, goerli, mainnet } from 'viem/chains'
+import { createPublicClient, http, PublicClient, Chain } from 'viem'
+import { bsc, goerli, mainnet, bscTestnet } from 'viem/chains'
 
-const requireCheck = [ETH_NODE, GOERLI_NODE, BSC_NODE, BSC_TESTNET_NODE, FDAX_NODE]
+
+export const  fdax = {
+  id: 2006,
+  name: "FDAX Smart Chain",
+  network: "fdax",
+  nativeCurrency: {
+      decimals: 18,
+      name: "FDX",
+      symbol: "FDX",
+ },
+  rpcUrls: {
+      default: {
+          http:  ["https://mainnet-rpc.5dax.com"],
+     },
+      public: {
+          http:  ["https://mainnet-rpc.5dax.com"],
+     },
+ },
+  blockExplorers: {
+      default: {
+          name: "FdaxScan",
+          url: "https://scan.5dax.com",
+     },
+ },
+ contracts: {
+   multicall3: {
+       address: "0x85C163aAeb2ecfA61Ea6D6f1b525e091A94aDB33" as `0x${string}`,
+       blockCreated: 1_651_639,
+   },
+ },
+ testnet: false,
+} as const satisfies Chain
+
+const requireCheck = [ETH_NODE, GOERLI_NODE, BSC_NODE, FDAX_NODE]
+
 requireCheck.forEach((node) => {
   if (!node) {
     throw new Error('Missing env var')
@@ -48,33 +82,8 @@ const goerliClient = createPublicClient({
     },
   },
 })
-const fdax = {
-   id: 2006,
-   name: "FDAX Smart Chain",
-   network: "fdax",
-   nativeCurrency: {
-       decimals: 18,
-       name: "FDX",
-       symbol: "FDX",
-  },
-   rpcUrls: {
-       default: {
-           http:  ["https://mainnet-rpc.5dax.com"],
-      },
-       public: {
-           http:  ["https://mainnet-rpc.5dax.com"],
-      },
-  },
-   blockExplorers: {
-       default: {
-           name: "FdaxScan",
-           url: "https://scan.5dax.com",
-      },
-  },
-  testnet: false,
-}
 
-const fdaxClient = createPublicClient({
+export const fdaxClient: PublicClient = createPublicClient({
   chain: fdax,
   transport: http(FDAX_NODE),
   batch: {
@@ -84,19 +93,19 @@ const fdaxClient = createPublicClient({
   },
 })
 
+
+
 export const viemProviders = ({ chainId }: { chainId?: ChainId }): PublicClient => {
   switch (chainId) {
     case ChainId.ETHEREUM:
       return mainnetClient
     case ChainId.BSC:
       return bscClient
-    case ChainId.BSC_TESTNET:
-      return bscTestnetClient
     case ChainId.GOERLI:
       return goerliClient
     case ChainId.FDAX:
       return fdaxClient
     default:
-      return bscClient
+      return fdaxClient
   }
 }
