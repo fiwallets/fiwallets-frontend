@@ -19,5 +19,5 @@ export const V3_SUBGRAPH_URLS: Record<SupportedChainId, string> = {
   [ChainId.BSC_TESTNET]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-v3-chapel',
   [ChainId.POLYGON_ZKEVM]: 'https://api.studio.thegraph.com/query/45376/exchange-v3-polygon-zkevm/v0.0.0',
   [ChainId.LINEA_TESTNET]: 'https://thegraph.goerli.zkevm.consensys.net/subgraphs/name/pancakeswap/exchange-v3-linea-goerli',
-  [ChainId.FDAX]: 'https://api.miexx.com/subgraphs/name/pancakeswap/exchange-v3-fdax',
+  [ChainId.FDAX]: 'https://api.miexx.com/subgraphs/name/miexxswap/exchange-v3-fdax',
 }

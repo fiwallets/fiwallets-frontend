@@ -6,7 +6,7 @@ export const useCakePrice = () => {
   return useSWRImmutable(
     ['cake-usd-price'],
     async () => {
-      const cake = await (await fetch('https://farms-api.pancakeswap.com/price/cake')).json()
+      const cake = await (await fetch('https://farms-dev.luannguyen-18c.workers.dev/price/cake')).json()
       return cake.price as string
     },
     {
@@ -20,7 +20,7 @@ export const useCakePriceAsBN = () => {
   const { data } = useSWRImmutable(
     ['cake-usd-price-bn'],
     async () => {
-      const cake = await (await fetch('https://farms-api.pancakeswap.com/price/cake')).json()
+      const cake = await (await fetch('https://farms-dev.luannguyen-18c.workers.dev/price/cake')).json()
       return new BigNumber(cake.price)
     },
     {

@@ -2,8 +2,12 @@ import { useConfig, useConnect } from 'wagmi'
 import { useEffect } from 'react'
 import { CHAINS } from 'config/chains'
 
+
+
 const useEagerConnect = () => {
   const config = useConfig()
+
+  
   const { connectAsync, connectors } = useConnect()
   useEffect(() => {
     if (
@@ -13,7 +17,6 @@ const useEagerConnect = () => {
       !window.cy
     ) {
       import('wagmi/connectors/safe').then(({ SafeConnector }) => {
-        // @ts-ignore
         const safe = new SafeConnector({ chains: CHAINS })
         connectAsync({ connector: safe }).catch(() => {
           config.autoConnect()

@@ -66,6 +66,7 @@ export const V3_SUBGRAPH_URLS = {
   [ChainId.BSC_TESTNET]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-v3-chapel',
   // TODO: new chains
   [ChainId.ARBITRUM_ONE]: 'https://thegraph.com/hosted-service/subgraph/chef-jojo/exchange-v3-arb',
+  [ChainId.ARBITRUM_GOERLI]: 'https://thegraph.com/hosted-service/subgraph/chef-jojo/exchange-v3-arb',
   [ChainId.POLYGON_ZKEVM]: 'https://api.studio.thegraph.com/query/45376/exchange-v3-polygon-zkevm/v0.0.0',
   [ChainId.POLYGON_ZKEVM_TESTNET]: null,
   [ChainId.ZKSYNC]: null,
@@ -80,6 +81,6 @@ export const TRADING_REWARD_API = 'https://pancake-trading-fee-rebate-api.pancak
 
 export const QUOTING_API = `${process.env.NEXT_PUBLIC_QUOTING_API}/v0/quote`
 
-export const FARMS_API = 'https://routing-dev.luannguyen-18c.workers.dev'
+export const FARMS_API = 'https://farms-dev.luannguyen-18c.workers.dev'
 
 export const MERCURYO_WIDGET_ID = process.env.NEXT_PUBLIC_MERCURYO_WIDGET_ID || '95a003f2-354a-4396-828a-1126d56e4e13'

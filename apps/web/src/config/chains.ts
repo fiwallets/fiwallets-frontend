@@ -12,7 +12,10 @@ import {
   lineaTestnet as lineaTestnet_,
   // arbitrumGoerli,
   Chain,
+  
 } from 'wagmi/chains'
+import { createConfig, configureChains } from 'wagmi'
+import { publicProvider } from 'wagmi/providers/public'
 
 export const CHAIN_QUERY_NAME = {
   [ChainId.ETHEREUM]: 'eth',
@@ -106,7 +109,7 @@ export const fdax = {
   contracts: {
       multicall3: {
           address: "0x85C163aAeb2ecfA61Ea6D6f1b525e091A94aDB33",
-          blockCreated: 1651639,
+          blockCreated: 1_651_639,
      },
   },
 } as const satisfies Chain

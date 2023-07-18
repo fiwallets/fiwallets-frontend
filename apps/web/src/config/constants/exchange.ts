@@ -5,7 +5,6 @@ import {
   USDC,
   USDT,
   BUSD,
-  WBTC_FDAX,
   WBTC_ETH,
   arbitrumTokens,
   polygonZkEvmTokens,

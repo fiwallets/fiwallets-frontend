@@ -23,7 +23,7 @@ export const V3_SUBGRAPH_CLIENTS = {
   [ChainId.BSC_TESTNET]: new GraphQLClient('https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-v3-chapel', {
     fetch,
   }),
-  [ChainId.FDAX]: new GraphQLClient('https://api.miexx.com/subgraphs/name/pancakeswap/exchange-v3-fdax', { fetch }),
+  [ChainId.FDAX]: new GraphQLClient('https://api.miexx.com/subgraphs/name/miexxswap/exchange-v3-fdax', { fetch }),
 
 } satisfies Record<FarmSupportedChainId, GraphQLClient>
 
