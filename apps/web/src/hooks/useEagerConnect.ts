@@ -2,12 +2,8 @@ import { useConfig, useConnect } from 'wagmi'
 import { useEffect } from 'react'
 import { CHAINS } from 'config/chains'
 
-
-
 const useEagerConnect = () => {
   const config = useConfig()
-
-  
   const { connectAsync, connectors } = useConnect()
   useEffect(() => {
     if (

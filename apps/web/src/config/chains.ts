@@ -5,17 +5,49 @@ import {
   bscTestnet,
   goerli,
   mainnet,
-  // zkSync as zkSync_,
-  // zkSyncTestnet as zkSyncTestnet_,
+  // zkSync,
+  zkSyncTestnet,
   polygonZkEvmTestnet as polygonZkEvmTestnet_,
   polygonZkEvm as polygonZkEvm_,
   lineaTestnet as lineaTestnet_,
   // arbitrumGoerli,
   Chain,
-  
 } from 'wagmi/chains'
-import { createConfig, configureChains } from 'wagmi'
-import { publicProvider } from 'wagmi/providers/public'
+
+export const fdax = {
+  id: 2006,
+  name: "FDAX Smart Chain",
+  network: "fdax",
+  nativeCurrency: {
+      decimals: 18,
+      name: "FDX",
+      symbol: "FDX",
+  },
+  rpcUrls: {
+      default: {
+          http:  ["https://mainnet-rpc.5dax.com"],
+     },
+      public: {
+          http:  ["https://mainnet-rpc.5dax.com"],
+     },
+  },
+  blockExplorers: {
+      etherscan: {
+          name: "FdaxScan",
+          url: "https://scan.5dax.com",
+     },
+      default: {
+          name: "FdaxScan",
+          url: "https://scan.5dax.com",
+     },
+  },
+  contracts: {
+      multicall3: {
+          address: "0x85C163aAeb2ecfA61Ea6D6f1b525e091A94aDB33",
+          blockCreated: 1_651_639,
+     },
+  },
+} as const satisfies Chain
 
 export const CHAIN_QUERY_NAME = {
   [ChainId.ETHEREUM]: 'eth',
@@ -58,61 +90,6 @@ const bsc = {
     },
   },
 } satisfies Chain
-
-// const zkSync = {
-//   ...zkSync_,
-//   contracts: {
-//     multicall3: {
-//       address: '0x47898B2C52C957663aE9AB46922dCec150a2272c',
-//       blockCreated: 1536804,
-//     },
-//   },
-// } as const satisfies Chain
-
-// const zkSyncTestnet = {
-//   ...zkSyncTestnet_,
-//   contracts: {
-//     multicall3: {
-//       address: '0x5640049C9e2d33127B34F1bef5C070509f14B5D0',
-//       blockCreated: 5137723,
-//     },
-//   },
-// } as const satisfies Chain
-
-export const fdax = {
-  id: 2006,
-  name: "FDAX Smart Chain",
-  network: "fdax",
-  nativeCurrency: {
-      decimals: 18,
-      name: "FDX",
-      symbol: "FDX",
-  },
-  rpcUrls: {
-      default: {
-          http:  ["https://mainnet-rpc.5dax.com"],
-     },
-      public: {
-          http:  ["https://mainnet-rpc.5dax.com"],
-     },
-  },
-  blockExplorers: {
-      etherscan: {
-          name: "FdaxScan",
-          url: "https://scan.5dax.com",
-     },
-      default: {
-          name: "FdaxScan",
-          url: "https://scan.5dax.com",
-     },
-  },
-  contracts: {
-      multicall3: {
-          address: "0x85C163aAeb2ecfA61Ea6D6f1b525e091A94aDB33",
-          blockCreated: 1_651_639,
-     },
-  },
-} as const satisfies Chain
 
 const polygonZkEvm = {
   ...polygonZkEvm_,
@@ -168,7 +145,7 @@ export const CHAINS = [
   bscTestnet,
   goerli,
   // zkSync,
-  // zkSyncTestnet,
+  zkSyncTestnet,
   polygonZkEvm,
   polygonZkEvmTestnet,
   lineaTestnet,

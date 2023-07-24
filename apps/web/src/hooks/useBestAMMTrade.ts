@@ -290,7 +290,6 @@ export const useBestAMMTradeFromQuoterApi = bestTradeHookFactory({
         candidatePools: candidatePools.map(SmartRouter.Transformer.serializePool),
       }),
     })
-
     const serializedRes = await serverRes.json()
     return SmartRouter.Transformer.parseTrade(currency.chainId, serializedRes)
   },

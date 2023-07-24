@@ -28,10 +28,10 @@ crons = ["0 0 * * *", "*/1 * * * *"]
 # - BSC_NODE
 # - BSC_TESTNET_NODE
 # - FDAX_NODE
+
 # Run `echo <VALUE> | wrangler secret put <NAME>` for each of these
 # echo https://mainnet-rpc.5dax.com | wrangler secret put FDAX_NODE
 # echo https://eth.llamarpc.com | wrangler secret put ETH_NODE
 # echo https://eth-goerli.public.blastapi.io | wrangler secret put GOERLI_NODE
 # echo https://bsc-dataseed.binance.org | wrangler secret put BSC_NODE
 # echo https://data-seed-prebsc-2-s1.binance.org:8545 | wrangler secret put BSC_TESTNET_NODE
-

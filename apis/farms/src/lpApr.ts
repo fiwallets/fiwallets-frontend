@@ -25,12 +25,6 @@ const BLOCKS_CLIENT_WITH_CHAIN = {
   [ChainId.BSC_TESTNET]: '',
   [ChainId.GOERLI]: '',
   [ChainId.FDAX]: 'https://api.miexx.com/subgraphs/name/miexxswap/blocks',
-  [ChainId.ZKSYNC_TESTNET]: '',
-  [ChainId.ZKSYNC]: '',
-  [ChainId.POLYGON_ZKEVM]: '',
-  [ChainId.POLYGON_ZKEVM_TESTNET]: '',
-  [ChainId.ARBITRUM_ONE]:'',
-  [ChainId.LINEA_TESTNET]:'',
 }
 
 const INFO_CLIENT_WITH_CHAIN = {
@@ -39,12 +33,6 @@ const INFO_CLIENT_WITH_CHAIN = {
   [ChainId.BSC_TESTNET]: '',
   [ChainId.GOERLI]: '',
   [ChainId.FDAX]: 'https://api.miexx.com/subgraphs/name/miexxswap/exhange-fdax',
-  [ChainId.ZKSYNC_TESTNET]: '',
-  [ChainId.ZKSYNC]: '',
-  [ChainId.POLYGON_ZKEVM]: '',
-  [ChainId.POLYGON_ZKEVM_TESTNET]: '',
-  [ChainId.ARBITRUM_ONE]:'',
-  [ChainId.LINEA_TESTNET]:'',
 }
 
 const blockClientWithChain = (chainId: ChainId) => {

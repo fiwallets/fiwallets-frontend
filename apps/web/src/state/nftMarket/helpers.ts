@@ -975,7 +975,6 @@ export const fetchWalletTokenIdsForCollections = async (
   })
 
   const balanceOfCallsResult = balanceOfCallsResultRaw.map((r) => r.result)
-
   const tokenIdCalls = tokenOfOwnerByIndexCollections
     .map((collection, index) => {
       const balanceOf = balanceOfCallsResult[index] ? Number(balanceOfCallsResult[index]) : 0

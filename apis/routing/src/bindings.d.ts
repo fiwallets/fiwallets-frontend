@@ -8,6 +8,6 @@ declare global {
   const BSC_TESTNET_NODE: string
   const AXIOM_TOKEN: string
   const FDAX_NODE: string
-
+  
   const SUBGRAPH_POOLS: R2Bucket
 }

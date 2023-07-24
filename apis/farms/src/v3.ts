@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-param-reassign */
-import { masterChefV3Addresses, FarmSupportedChainId } from '@pancakeswap/farms'
+import { masterChefV3Addresses, FarmV3SupportedChainId } from '@pancakeswap/farms'
 import { ChainId, ERC20Token } from '@pancakeswap/sdk'
 import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
 import { PositionMath } from '@pancakeswap/v3-sdk'
@@ -20,14 +20,20 @@ export const V3_SUBGRAPH_CLIENTS = {
     fetch,
   }),
   [ChainId.BSC]: new GraphQLClient('https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-v3-bsc', { fetch }),
+  [ChainId.FDAX]: new GraphQLClient('https://api.miexx.com/subgraphs/name/miexxswap/exchange-v3-fdax', { fetch }),
+
   [ChainId.BSC_TESTNET]: new GraphQLClient('https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-v3-chapel', {
     fetch,
   }),
-  [ChainId.FDAX]: new GraphQLClient('https://api.miexx.com/subgraphs/name/miexxswap/exchange-v3-fdax', { fetch }),
+  [ChainId.ZKSYNC_TESTNET]: new GraphQLClient(
+    'https://api.studio.thegraph.com/query/45376/exchange-v3-zksync-testnet/version/latest',
+    {
+      fetch,
+    },
+  ),
+} satisfies Record<Exclude<FarmV3SupportedChainId, ChainId.POLYGON_ZKEVM_TESTNET>, GraphQLClient>
 
-} satisfies Record<FarmSupportedChainId, GraphQLClient>
-
-const zChainId = z.enum(['56', '1', '5', '97','2006'])
+const zChainId = z.enum(['56', '1', '5', '97', '280', '2006'])
 
 const zAddress = z.string().regex(/^0x[a-fA-F0-9]{40}$/)
 

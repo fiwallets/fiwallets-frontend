@@ -1,4 +1,4 @@
-import { Address, PublicClient, formatUnits} from 'viem'
+import { Address, PublicClient, formatUnits } from 'viem'
 import BN from 'bignumber.js'
 import { BIG_TWO, BIG_ZERO } from '@pancakeswap/utils/bigNumber'
 import { ChainId } from '@pancakeswap/sdk'
@@ -7,11 +7,10 @@ import { fetchPublicFarmsData } from './fetchPublicFarmData'
 import { fetchStableFarmData } from './fetchStableFarmData'
 import { isStableFarm, SerializedFarmConfig } from '../types'
 import { getFullDecimalMultiplier } from './getFullDecimalMultiplier'
-import { FarmSupportedChainId, supportedChainIdV2 } from '../const'
-
+import { FarmV2SupportedChainId, supportedChainIdV2 } from '../const'
 
 const evmNativeStableLpMap: Record<
-  FarmSupportedChainId,
+  FarmV2SupportedChainId,
   {
     address: Address
     wNative: string
@@ -39,9 +38,9 @@ const evmNativeStableLpMap: Record<
     stable: 'BUSD',
   },
   [ChainId.FDAX]: {
-    address: '0xa27a128dD70479FD2B37662223C6523F10eBc21A',
+    address: '0x15900188ef55317fa1d9f3c9a57fdd01e07dcd72',
     wNative: 'WFDX',
-    stable: 'FDX',
+    stable: 'USDT',
   },
 }
 
@@ -129,7 +128,7 @@ export async function farmV2FetchFarms({
     }
   })
 
-  const farmsDataWithPrices = getFarmsPrices(farmsData, evmNativeStableLpMap[chainId as FarmSupportedChainId], 18)
+  const farmsDataWithPrices = getFarmsPrices(farmsData, evmNativeStableLpMap[chainId as FarmV2SupportedChainId], 18)
 
   return farmsDataWithPrices
 }
@@ -205,6 +204,7 @@ export const fetchMasterChefData = async (
     const masterChefCalls = farms.map((farm) => masterChefFarmCalls(farm, masterChefAddress))
     const masterChefAggregatedCalls = masterChefCalls.filter(notEmpty)
 
+    // const chainId = isTestnet ? ChainId.BSC_TESTNET : ChainId.BSC
     const chainId = isTestnet ? ChainId.FDAX : ChainId.FDAX
     const masterChefMultiCallResult = await provider({ chainId }).multicall({
       contracts: masterChefAggregatedCalls,
@@ -242,6 +242,7 @@ export const fetchMasterChefV2Data = async ({
   masterChefAddress: Address
 }) => {
   try {
+    // const chainId = isTestnet ? ChainId.BSC_TESTNET : ChainId.BSC
     const chainId = isTestnet ? ChainId.FDAX : ChainId.FDAX
     const [poolLength, totalRegularAllocPoint, totalSpecialAllocPoint, cakePerBlock] = await provider({
       chainId,
@@ -270,8 +271,6 @@ export const fetchMasterChefV2Data = async ({
         },
       ],
       allowFailure: false,
-      multicallAddress: '0x85C163aAeb2ecfA61Ea6D6f1b525e091A94aDB33' ,
-
     })
 
     return {

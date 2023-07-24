@@ -123,7 +123,7 @@ export const FarmV3Card: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
             </Text>
           </Flex>
         )}
-        {!account && (
+        {!account && farm.boosted && (
           <Box mt="24px" mb="16px">
             <StatusView status={boostStatus} />
           </Box>
@@ -146,7 +146,7 @@ export const FarmV3Card: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
             />
             <DetailsSection
               removed={removed}
-              scanAddressLink={getBlockExploreLink(lpAddress, 'address', chainId)}
+              scanAddress={{ link: getBlockExploreLink(lpAddress, 'address', chainId), chainId }}
               infoAddress={infoUrl}
               totalValueFormatted={`$${parseInt(farm.activeTvlUSD).toLocaleString(undefined, {
                 maximumFractionDigits: 0,

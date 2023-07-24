@@ -1,23 +1,5 @@
 import { ChainId, ERC20Token } from '@pancakeswap/sdk'
 
-export const CAKE_MAINNET = new ERC20Token(
-  ChainId.BSC,
-  '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
-  18,
-  'CAKE',
-  'PancakeSwap Token',
-  'https://pancakeswap.finance/',
-)
-
-export const CAKE_TESTNET = new ERC20Token(
-  ChainId.BSC_TESTNET,
-  '0x8d008B313C1d6C7fE2982F62d32Da7507cF43551',
-  18,
-  'CAKE',
-  'PancakeSwap Token',
-  'https://pancakeswap.finance/',
-)
-
 // FDAX
 export const CAKE_FDAX = new ERC20Token(
   ChainId.FDAX,
@@ -52,6 +34,24 @@ export const WBTC_FDAX = new ERC20Token(
   8,
   'WBTC',
   'Wrapped BTC',
+)
+
+export const CAKE_MAINNET = new ERC20Token(
+  ChainId.BSC,
+  '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
+  18,
+  'CAKE',
+  'PancakeSwap Token',
+  'https://pancakeswap.finance/',
+)
+
+export const CAKE_TESTNET = new ERC20Token(
+  ChainId.BSC_TESTNET,
+  '0x8d008B313C1d6C7fE2982F62d32Da7507cF43551',
+  18,
+  'CAKE',
+  'PancakeSwap Token',
+  'https://pancakeswap.finance/',
 )
 
 export const USDC_BSC = new ERC20Token(
@@ -147,7 +147,6 @@ export const BUSD = {
   [ChainId.GOERLI]: BUSD_GOERLI,
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
-  [ChainId.FDAX]: BUSD_FDAX,
   [ChainId.ZKSYNC]: new ERC20Token(
     ChainId.ZKSYNC,
     '0x2039bb4116B4EFc145Ec4f0e2eA75012D6C0f181',
@@ -155,6 +154,7 @@ export const BUSD = {
     'BUSD',
     'Binance USD',
   ),
+  [ChainId.FDAX]: BUSD_FDAX,
 }
 
 export const CAKE = {
@@ -176,6 +176,22 @@ export const CAKE = {
   ),
   [ChainId.BSC]: CAKE_MAINNET,
   [ChainId.BSC_TESTNET]: CAKE_TESTNET,
+  [ChainId.POLYGON_ZKEVM_TESTNET]: new ERC20Token(
+    ChainId.POLYGON_ZKEVM_TESTNET,
+    '0x2B3C5df29F73dbF028BA82C33e0A5A6e5800F75e',
+    18,
+    'CAKE',
+    'PancakeSwap Token',
+    'https://pancakeswap.finance/',
+  ),
+  [ChainId.ZKSYNC_TESTNET]: new ERC20Token(
+    ChainId.ZKSYNC_TESTNET,
+    '0xFf2FA31273c1aedB67017B52C625633d2F021f67',
+    18,
+    'CAKE',
+    'PancakeSwap Token',
+    'https://pancakeswap.finance/',
+  ),
   [ChainId.FDAX]: CAKE_FDAX,
 }
 
@@ -224,7 +240,6 @@ export const USDC = {
 
 export const USDT = {
   [ChainId.BSC]: USDT_BSC,
-  [ChainId.FDAX]: USDT_FDAX,
   [ChainId.ETHEREUM]: USDT_ETH,
   [ChainId.ARBITRUM_ONE]: new ERC20Token(
     ChainId.ARBITRUM_ONE,
@@ -247,6 +262,7 @@ export const USDT = {
     'USDT',
     'Tether USD',
   ),
+  [ChainId.FDAX]: USDT_FDAX,
 }
 
 export const WBTC_ETH = new ERC20Token(
@@ -256,7 +272,6 @@ export const WBTC_ETH = new ERC20Token(
   'WBTC',
   'Wrapped BTC',
 )
-
 
 export const STABLE_COIN = {
   [ChainId.ETHEREUM]: USDT[ChainId.ETHEREUM],

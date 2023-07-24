@@ -19,7 +19,6 @@ const CACHE_TIME = {
   [ChainId.BSC]: 2,
   [ChainId.BSC_TESTNET]: 2,
   [ChainId.FDAX]: 2,
-
 }
 
 const onChainQuoteProvider = SmartRouter.createQuoteProvider({ onChainProvider: viemProviders })
@@ -52,6 +51,7 @@ async function sha256(message: string) {
 }
 
 router.get('/v0/quote', async (req, event: FetchEvent) => {
+
   const parsed = SmartRouter.APISchema.zRouterGetParams.safeParse(req.query)
   if (parsed.success === false) {
     return error(400, 'Invalid params')

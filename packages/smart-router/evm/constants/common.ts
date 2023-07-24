@@ -21,5 +21,4 @@ export const CHAIN_ID_TO_CHAIN_NAME = {
   [ChainId.ZKSYNC_TESTNET]: '',
   [ChainId.LINEA_TESTNET]: '',
   [ChainId.FDAX]: 'fdax',
-
 } satisfies Record<ChainId, string>

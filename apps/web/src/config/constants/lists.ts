@@ -10,7 +10,6 @@ export const PANCAKE_FDAX_DEFAULT = 'https://raw.githubusercontent.com/fiwallets
 export const ETH_URLS = [PANCAKE_ETH_DEFAULT, PANCAKE_ETH_MM, COINGECKO_ETH]
 export const BSC_URLS = [PANCAKE_EXTENDED, CMC, COINGECKO, PANCAKE_BSC_MM]
 export const FDAX_URLS = [PANCAKE_FDAX_DEFAULT]
-
 // List of official tokens list
 export const OFFICIAL_LISTS = [PANCAKE_EXTENDED, PANCAKE_ETH_DEFAULT, PANCAKE_FDAX_DEFAULT]
 

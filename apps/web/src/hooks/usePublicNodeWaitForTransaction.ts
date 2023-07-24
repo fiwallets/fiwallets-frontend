@@ -9,7 +9,6 @@ const viemClientsPublicNodes = CHAINS.reduce((prev, cur) => {
   return {
     ...prev,
     [cur.id]: createPublicClient({
-      // @ts-ignore
       chain: cur,
       transport: http(cur.rpcUrls.public.http[0], {
         timeout: 15_000,

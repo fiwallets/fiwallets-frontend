@@ -14,7 +14,7 @@ import {
   supportedChainIdV2,
 } from '@pancakeswap/farms'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { useCakePriceAsBN } from '@pancakeswap/utils/useCakePrice'
+import { useCakePriceAsBN } from 'hooks/useCakePriceAsBN'
 
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync } from '.'
@@ -42,6 +42,7 @@ export function useFarmV2PublicAPI() {
     chainId && supportedChainIdV2.includes(chainId) ? ['farm-v2-pubic-api', chainId] : null,
     async () => {
       return fetch(`https://farms-dev.luannguyen-18c.workers.dev/${chainId}`)
+      // return fetch(`https://farms-api.pancakeswap.com/${chainId}`)
         .then((res) => res.json())
         .then((res) => res.data)
     },

@@ -15,10 +15,14 @@ export async function getBestTrade(
   const { blockNumber: blockNumberFromConfig } = config
   const blockNumber: BigintIsh | undefined =
     typeof blockNumberFromConfig === 'function' ? await blockNumberFromConfig() : blockNumberFromConfig
+  
   const bestRoutes = await getBestRoutes(amount, currency, tradeType, {
     ...config,
     blockNumber,
   })
+
+  console.log('~~~~~~~~CHECK BEST ROUTER~~~~~~~~', config, currency, tradeType)
+
   if (!bestRoutes || bestRoutes.outputAmount.equalTo(ZERO)) {
     throw new Error('Cannot find a valid swap route')
   }
@@ -68,7 +72,6 @@ async function getBestRoutes(
     blockNumber,
     protocols: allowedPoolTypes,
   })
-
   let baseRoutes = computeAllRoutes(inputCurrency, outputCurrency, candidatePools, maxHops)
   // Do not support mix route on exact output
   if (tradeType === TradeType.EXACT_OUTPUT) {
@@ -76,6 +79,8 @@ async function getBestRoutes(
   }
 
   const gasModel = await createGasModel({ gasPriceWei, poolProvider, quoteCurrency: currency, blockNumber })
+
+
   const routesWithValidQuote = await getRoutesWithValidQuote({
     amount,
     baseRoutes,

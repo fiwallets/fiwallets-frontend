@@ -6,8 +6,6 @@ import { GraphQLClient } from 'graphql-request'
 
 import { V3_SUBGRAPH_URLS } from './constants'
 
-const requireCheck = [ETH_NODE, GOERLI_NODE, BSC_NODE, BSC_TESTNET_NODE, FDAX_NODE]
-
 export const  fdax = {
   id: 2006,
   name: "FDAX Smart Chain",
@@ -40,6 +38,8 @@ export const  fdax = {
  testnet: false,
 } as const satisfies Chain
 
+const requireCheck = [ETH_NODE, GOERLI_NODE, BSC_NODE, BSC_TESTNET_NODE, FDAX_NODE]
+
 requireCheck.forEach((node) => {
   if (!node) {
     throw new Error('Missing env var')
@@ -66,13 +66,10 @@ const goerliClient = createPublicClient({
   transport: http(GOERLI_NODE),
 })
 
-
 const fdaxClient = createPublicClient({
   chain: fdax,
   transport: http(FDAX_NODE),
 })
-
-
 // @ts-ignore
 export const viemProviders: OnChainProvider = ({ chainId }: { chainId?: ChainId }) => {
   switch (chainId) {
@@ -87,7 +84,7 @@ export const viemProviders: OnChainProvider = ({ chainId }: { chainId?: ChainId 
     case ChainId.FDAX:
       return fdaxClient
     default:
-      return fdaxClient
+      return bscClient
   }
 }
 
@@ -99,6 +96,6 @@ export const v3SubgraphClients = {
   [ChainId.FDAX]: new GraphQLClient(V3_SUBGRAPH_URLS[ChainId.FDAX], { fetch }),
 }
 
-export const v3SubgraphProvider: SubgraphProvider = ({ chainId = ChainId.BSC }: { chainId?: ChainId }) => {
+export const v3SubgraphProvider: SubgraphProvider = ({ chainId = ChainId.FDAX }: { chainId?: ChainId }) => {
   return v3SubgraphClients[chainId] || v3SubgraphClients[ChainId.BSC]
 }

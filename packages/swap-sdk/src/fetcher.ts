@@ -1,4 +1,5 @@
-import { createPublicClient, PublicClient, http, getContract, Address, Chain } from 'viem'
+import { createPublicClient, PublicClient, http, getContract, Address } from 'viem'
+import { Chain } from 'wagmi'
 import { bsc, bscTestnet, mainnet, goerli } from 'viem/chains'
 import { CurrencyAmount, Token } from '@pancakeswap/swap-sdk-core'
 import invariant from 'tiny-invariant'
@@ -7,9 +8,6 @@ import { ChainId } from './constants'
 import { erc20ABI } from './abis/ERC20'
 import { pancakePairV2ABI } from './abis/IPancakePair'
 
-let TOKEN_DECIMALS_CACHE: { [chainId: number]: { [address: string]: number } } = {
-  [ChainId.FDAX]: {},
-}
 export const fdax = {
   id: 2006,
   name: "FDAX Smart Chain",
@@ -44,6 +42,11 @@ export const fdax = {
      },
   },
 } as const satisfies Chain
+
+let TOKEN_DECIMALS_CACHE: { [chainId: number]: { [address: string]: number } } = {
+  [ChainId.BSC]: {},
+}
+
 const ethClient = createPublicClient({ chain: mainnet, transport: http() })
 const bscClient = createPublicClient({ chain: bsc, transport: http() })
 const bscTestnetClient = createPublicClient({ chain: bscTestnet, transport: http() })
@@ -61,9 +64,9 @@ const getDefaultClient = (chainId: ChainId): PublicClient => {
     case ChainId.GOERLI:
       return goerliClient
     case ChainId.FDAX:
-      return fdaxClient 
-    default:
       return fdaxClient
+    default:
+      return bscClient
   }
 }
 

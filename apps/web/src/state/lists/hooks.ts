@@ -202,13 +202,14 @@ export function useAllLists(): {
   const { chainId } = useActiveChainId()
 
   const urls = useAtomValue(selectorByUrlsAtom)
+
   return useMemo(
     () =>
       _pickBy(
         urls,
         (_, url) =>
           (chainId === ChainId.ETHEREUM && ETH_URLS.includes(url)) ||
-          (chainId === ChainId.BSC && BSC_URLS.includes(url)) ||
+          (chainId === ChainId.BSC && BSC_URLS.includes(url))||
           (chainId === ChainId.FDAX && FDAX_URLS.includes(url)),
       ),
     [chainId, urls],
@@ -236,6 +237,7 @@ function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddress
 export function useActiveListUrls(): string[] | undefined {
   const { chainId } = useActiveChainId()
   const urls = useAtomValue(activeListUrlsAtom)
+
   return useMemo(
     () =>
       urls.filter(
