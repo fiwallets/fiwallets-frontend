@@ -32,7 +32,7 @@ const INFO_CLIENT_WITH_CHAIN = {
   [ChainId.ETHEREUM]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth',
   [ChainId.BSC_TESTNET]: '',
   [ChainId.GOERLI]: '',
-  [ChainId.FDAX]: 'https://api.miexx.com/subgraphs/name/miexxswap/exhange-fdax',
+  [ChainId.FDAX]: 'https://proxy-worker-dev.luannguyen-18c.workers.dev/exchange-fdax',
 }
 
 const blockClientWithChain = (chainId: ChainId) => {

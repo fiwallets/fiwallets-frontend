@@ -5,7 +5,7 @@ export const BASE_ADD_LIQUIDITY_URL = `${DOMAIN}/add`
 
 export const APEX_DOMAIN = process.env.NEXT_PUBLIC_APEX_URL
 
-export const ASSETS_CDN = 'https://assets.pancakeswap.finance'
+export const ASSETS_CDN = 'https://raw.githubusercontent.com/fiwallets/token-list/main'
 
 export const LOW_APT = 0.1
 export const DEFAULT_TOKEN_DECIMAL = getFullDecimalMultiplier(18)

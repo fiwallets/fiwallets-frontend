@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction, isAnyOf } from '@reduxjs/
 import BigNumber from 'bignumber.js'
 import keyBy from 'lodash/keyBy'
 import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens, fdaxTokens } from '@pancakeswap/tokens'
 import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
 import { fetchTokenUSDValue } from '@pancakeswap/utils/llamaPrice'
 import {
@@ -120,13 +120,13 @@ export const fetchCakePoolUserDataAsync =
       contracts: [
         {
           abi: erc20ABI,
-          address: bscTokens.cake.address,
+          address: fdaxTokens.cake.address,
           functionName: 'allowance',
           args: [account as Address, getCakeVaultAddress(chainId)],
         },
         {
           abi: erc20ABI,
-          address: bscTokens.cake.address,
+          address: fdaxTokens.cake.address,
           functionName: 'balanceOf',
           args: [account as Address],
         },
@@ -168,8 +168,11 @@ export const fetchPoolsPublicDataAsync = (chainId: number) => async (dispatch, g
       )
     })
 
+    console.log('Fetching farmV3', chainId)
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const fetchFarmV3Promise = farmV3ApiFetch(chainId).catch((error) => {
+      console.log('Catch error when fetching farmV3', error)
       return undefined
     })
 

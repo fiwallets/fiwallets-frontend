@@ -1,0 +1,93 @@
+[
+  {
+    "pid": 0,
+    "v1pid": 0,
+    "lpSymbol": "CAKE",
+    "lpAddress": "0xC4610d97c89E9d8326fb6A536f41A12580C12204",
+    "token": {
+      "address": "0x35aDE6588d08114Fea2c22735187b223A5A7963C",
+      "chainId": 2006,
+      "decimals": 18,
+      "symbol": "SYRUP",
+      "name": "SyrupBar Token",
+      "projectLink": "https://miexx.finance/"
+    },
+    "quoteToken": {
+      "address": "0xa27a128dD70479FD2B37662223C6523F10eBc21A",
+      "chainId": 2006,
+      "decimals": 18,
+      "symbol": "WFDX",
+      "name": "Wrapped FDX",
+      "projectLink": "https://5dax.com"
+    },
+    "boosted": true
+  },
+  {
+    "pid": 2,
+    "v1pid": 2,
+    "lpSymbol": "MIEXS-FDX LP",
+    "lpAddress": "0xE2C5834FbA57Ab7558824953a88f9FcE140953E2",
+    "boosted": true,
+    "token": {
+      "address": "0xC4610d97c89E9d8326fb6A536f41A12580C12204",
+      "chainId": 2006,
+      "decimals": 18,
+      "symbol": "Miexs",
+      "name": "MiexsSwap Token",
+      "projectLink": "https://pancakeswap.finance/"
+    },
+    "quoteToken": {
+      "address": "0xa27a128dD70479FD2B37662223C6523F10eBc21A",
+      "chainId": 2006,
+      "decimals": 18,
+      "symbol": "WFDX",
+      "name": "Wrapped FDX",
+      "projectLink": "https://5dax.com"
+    }
+  },
+  {
+    "pid": 3,
+    "v1pid": 3,
+    "lpSymbol": "MIEXS-BUSD LP",
+    "lpAddress": "0x9a02DB6b7D23121a1c3Cb8025A397ec77CB052b6",
+    "token": {
+      "address": "0xC4610d97c89E9d8326fb6A536f41A12580C12204",
+      "chainId": 2006,
+      "decimals": 18,
+      "symbol": "Miexs",
+      "name": "MiexsSwap Token",
+      "projectLink": "https://pancakeswap.finance/"
+    },
+    "quoteToken": {
+      "address": "0xe5E8CA35B7bf7045288bf6731f071f9f98c5ce47",
+      "chainId": 2006,
+      "decimals": 18,
+      "symbol": "BUSD",
+      "name": "Binance USD",
+      "projectLink": "https://www.paxos.com/busd/"
+    }
+  },
+  {
+    "pid": 4,
+    "v1pid": 4,
+    "lpSymbol": "MIEXS-USDT LP",
+    "lpAddress": "0x8795EeD7AB5Ebd687b805A92deFE6a9e38E8b1D0",
+    "token": {
+      "address": "0xC4610d97c89E9d8326fb6A536f41A12580C12204",
+      "chainId": 2006,
+      "decimals": 18,
+      "symbol": "Miexs",
+      "name": "MiexsSwap Token",
+      "projectLink": "https://pancakeswap.finance/"
+    },
+    "quoteToken": {
+      "address": "0x3f851192D8b2D8DADc7c2B49F7a9FA27CdCEA680", 
+      "chainId": 2006,
+      "decimals": 18,
+      "symbol": "USDT",
+      "name": "Tether USD",
+      "projectLink": "https://tether.to/"
+    },
+    "boosted": true
+  }
+]

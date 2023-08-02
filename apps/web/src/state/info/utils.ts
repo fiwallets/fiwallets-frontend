@@ -25,6 +25,8 @@ export function getChainName(chainId: ChainId) {
       return 'BSC'
     case ChainId.ETHEREUM:
       return 'ETH'
+    case ChainId.FDAX:
+      return 'FDAX'
     default:
       return 'BSC'
   }

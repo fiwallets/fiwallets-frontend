@@ -96,7 +96,6 @@ const transformPool = (
     if (amount) {
       userData = { ...userData, stakingTokenBalance: new BigNumber(amount) }
     }
-
     const resourceTypes = resource.type
     const foundStakedPoolBalance = balances.find(
       (balance) => balance.type === resourceTypes.replace('PoolInfo', 'UserInfo'),

@@ -142,4 +142,9 @@ const nativeStableLpMap = {
     wNative: 'WBNB',
     stable: 'BUSD',
   },
+  [ChainId.FDAX]: {
+    address: '0x7B25Abf88d5A1cb9c2173B5783558495629E0b5c',
+    wNative: 'WFDX',
+    stable: 'USDT',
+  },
 }

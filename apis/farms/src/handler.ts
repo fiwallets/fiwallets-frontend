@@ -100,7 +100,7 @@ const getCakePrice = async (isTestnet: boolean) => {
   return pair.priceOf(tokenA)
 }
 
-const farmConfigApi = 'https://farms-config.pages.dev'
+const farmConfigApi = 'https://demo.miexs.com/lists'
 
 export async function saveFarms(chainId: number, event: ScheduledEvent | FetchEvent) {
   try {
@@ -109,20 +109,20 @@ export async function saveFarms(chainId: number, event: ScheduledEvent | FetchEv
     let farmsConfig: SerializedFarmConfig[];
     let lpPriceHelpers: SerializedFarmConfig[] = []
 
-    if(chainId == ChainId.FDAX){
-      farmsConfig = await (await fetch(`https://raw.githubusercontent.com/fiwallets/farm-config/main/2006.json`)).json<SerializedFarmConfig[]>()
-    }else {
-      farmsConfig = await (await fetch(`${farmConfigApi}/${chainId}.json`)).json<SerializedFarmConfig[]>()
-      try {
-        lpPriceHelpers = await (
-          await fetch(`${farmConfigApi}/priceHelperLps/${chainId}.json`)
-        ).json<SerializedFarmConfig[]>()
-      } catch (error) {
-        console.error('Get LP price helpers error', error)
-      }
-    }
+    // if(chainId == ChainId.FDAX){
+    //   farmsConfig = await (await fetch(`https://raw.githubusercontent.com/fiwallets/farm-config/main/2006.json`)).json<SerializedFarmConfig[]>()
+    // }else {
 
-    
+    // }
+
+    farmsConfig = await (await fetch(`${farmConfigApi}/${chainId}.json`)).json<SerializedFarmConfig[]>()
+    try {
+      lpPriceHelpers = await (
+        await fetch(`${farmConfigApi}/priceHelperLps/${chainId}.json`)
+      ).json<SerializedFarmConfig[]>()
+    } catch (error) {
+      console.error('Get LP price helpers error', error)
+    }
 
     if (!farmsConfig) {
       throw new Error(`Farms config not found ${chainId}`)
@@ -170,7 +170,7 @@ export async function handleLpAprs(chainId: number, farmsConfig?: SerializedFarm
 
 export async function saveLPsAPR(chainId: number, farmsConfig?: SerializedFarmConfig[]) {
   // TODO: add other chains
-  if (chainId === 56) {
+  if (chainId === 2006) {
     let data = farmsConfig
     if (!data) {
       const value = await FarmKV.getFarms(chainId)

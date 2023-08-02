@@ -1,8 +1,8 @@
-import { BLOCKS_CLIENT, BLOCKS_CLIENT_ETH } from 'config/constants/endpoints'
-import { infoClientETH, infoClient, infoStableSwapClient, v2Clients } from 'utils/graphql'
+import { BLOCKS_CLIENT, BLOCKS_CLIENT_ETH, BLOCKS_CLIENT_FDAX } from 'config/constants/endpoints'
+import { infoClientETH, infoClient, infoStableSwapClient, v2Clients, infoClientFDAX } from 'utils/graphql'
 import { GraphQLClient } from 'graphql-request'
 
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId, fdax } from '@pancakeswap/sdk'
 import {
   ETH_TOKEN_BLACKLIST,
   PCS_ETH_START,
@@ -13,7 +13,7 @@ import {
 } from 'config/constants/info'
 import { bsc, mainnet, polygonZkEvm } from 'wagmi/chains'
 
-export type MultiChainName = 'BSC' | 'ETH' | 'POLYGON_ZKEVM'
+export type MultiChainName = 'BSC' | 'ETH' | 'POLYGON_ZKEVM' | 'FDAX'
 
 export type MultiChainNameExtend = MultiChainName | 'BSC_TESTNET' | 'ZKSYNC_TESTNET'
 
@@ -22,12 +22,15 @@ export const multiChainName: Record<number | string, MultiChainNameExtend> = {
   [ChainId.ETHEREUM]: 'ETH',
   [ChainId.BSC_TESTNET]: 'BSC_TESTNET',
   [ChainId.POLYGON_ZKEVM]: 'POLYGON_ZKEVM',
+  [ChainId.FDAX]: 'FDAX',
+
 }
 
 export const multiChainQueryMainToken: Record<MultiChainName, string> = {
   BSC: 'BNB',
   ETH: 'ETH',
   POLYGON_ZKEVM: 'ETH',
+  FDAX: 'FDAX',
 }
 
 export const multiChainBlocksClient: Record<MultiChainNameExtend, string> = {
@@ -36,48 +39,61 @@ export const multiChainBlocksClient: Record<MultiChainNameExtend, string> = {
   BSC_TESTNET: 'https://api.thegraph.com/subgraphs/name/lengocphuc99/bsc_testnet-blocks',
   POLYGON_ZKEVM: 'https://api.studio.thegraph.com/query/45376/polygon-zkevm-block/version/latest',
   ZKSYNC_TESTNET: 'https://api.studio.thegraph.com/query/45376/blocks-zksync-testnet/version/latest',
+  FDAX: BLOCKS_CLIENT_FDAX,
+
 }
 
 export const multiChainStartTime = {
   BSC: PCS_V2_START,
   ETH: PCS_ETH_START,
   POLYGON_ZKEVM: 1686236845,
+  FDAX: PCS_V2_START, //Todo: update
+
 }
 
 export const multiChainId: Record<MultiChainName, ChainId> = {
   BSC: ChainId.BSC,
   ETH: ChainId.ETHEREUM,
   POLYGON_ZKEVM: ChainId.POLYGON_ZKEVM,
+  FDAX: ChainId.FDAX,
+
 }
 
 export const multiChainPaths = {
   [ChainId.BSC]: '',
   [ChainId.ETHEREUM]: '/eth',
   [ChainId.POLYGON_ZKEVM]: '/polygon-zkevm',
+  [ChainId.FDAX]: '/fdax',
 }
 
 export const multiChainQueryClient = {
   BSC: infoClient,
   ETH: infoClientETH,
   POLYGON_ZKEVM: v2Clients[ChainId.POLYGON_ZKEVM],
+  FDAX: infoClientFDAX,
+
 }
 
 export const multiChainScan: Record<MultiChainName, string> = {
   BSC: bsc.blockExplorers.etherscan.name,
   ETH: mainnet.blockExplorers.etherscan.name,
   POLYGON_ZKEVM: polygonZkEvm.blockExplorers.default.name,
+  FDAX: fdax.blockExplorers.etherscan.name,
+
 }
 
 export const multiChainTokenBlackList: Record<MultiChainName, string[]> = {
   BSC: TOKEN_BLACKLIST,
   ETH: ETH_TOKEN_BLACKLIST,
   POLYGON_ZKEVM: ['0x'],
+  FDAX: ['0x'],
 }
 
 export const multiChainTokenWhiteList: Record<MultiChainName, string[]> = {
   BSC: BSC_TOKEN_WHITELIST,
   ETH: ETH_TOKEN_WHITELIST,
   POLYGON_ZKEVM: [],
+  FDAX: [],
 }
 
 export const getMultiChainQueryEndPointWithStableSwap = (chainName: MultiChainNameExtend): GraphQLClient => {

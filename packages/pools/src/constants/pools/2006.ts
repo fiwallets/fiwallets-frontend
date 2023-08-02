@@ -8,7 +8,7 @@ export const livePools: SerializedPool[] = [
     sousId: 0,
     stakingToken: fdaxTokens.cake,
     earningToken: fdaxTokens.cake,
-    contractAddress: '0x9a9F76bcf72600831BB0EA181338B1eE7eB9c285',
+    contractAddress: '0x5587d748b78327Aec0Ef57AEe0d3034f32c116BA',
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',
     isFinished: false,

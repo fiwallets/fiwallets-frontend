@@ -20,7 +20,7 @@ export const fdaxTokens = {
   busd: BUSD_FDAX,
   syrup: new ERC20Token(
     ChainId.FDAX,
-    '0xE2F32222d76119d7690b0EaBefCcC9aE57c71698',
+    '0x35aDE6588d08114Fea2c22735187b223A5A7963C',
     18,
     'SYRUP',
     'SyrupBar Token',

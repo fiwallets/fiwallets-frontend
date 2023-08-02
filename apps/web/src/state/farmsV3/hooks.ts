@@ -114,7 +114,7 @@ export const useFarmsV3 = ({ mockApr = false }: UseFarmsOptions = {}) => {
     async () => {
       const tvls: TvlMap = {}
       if (
-        [ChainId.BSC, ChainId.GOERLI, ChainId.ETHEREUM, ChainId.BSC_TESTNET, ChainId.ZKSYNC_TESTNET].includes(chainId)
+        [ChainId.BSC, ChainId.GOERLI, ChainId.ETHEREUM, ChainId.BSC_TESTNET, ChainId.ZKSYNC_TESTNET, ChainId.FDAX].includes(chainId)
       ) {
         const results = await Promise.allSettled(
           farmV3.data.farmsWithPrice.map((f) =>

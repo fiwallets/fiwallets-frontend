@@ -463,7 +463,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
               </NextLinkFromReactRouter>
             </Box>
 
-            {(chainId === ChainId.BSC || chainId === ChainId.BSC_TESTNET) && (
+            {(chainId === ChainId.BSC || chainId === ChainId.FDAX) && (
               <Box>
                 <BCakeBoosterCard />
               </Box>

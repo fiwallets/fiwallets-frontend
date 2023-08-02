@@ -57,7 +57,7 @@ const StakeModalContainer = ({
   )
 
   const tokenImageUrl = useMemo(
-    () => `https://tokens.pancakeswap.finance/images/${tokenImageChainNameMapping[chainId]}`,
+    () => `https://raw.githubusercontent.com/fiwallets/token-list/main/lists/images/${tokenImageChainNameMapping[chainId]}`,
     [chainId],
   )
 

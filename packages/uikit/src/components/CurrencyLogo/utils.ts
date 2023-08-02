@@ -38,15 +38,16 @@ const chainName: { [key: number]: string } = {
   [ChainId.ETHEREUM]: "eth",
   [ChainId.POLYGON_ZKEVM]: "polygonzkevm",
   [ChainId.ARBITRUM_ONE]: "arb",
+  [ChainId.FDAX]: "fdax",
 };
 
 // TODO: move to utils or token-list
 export const getTokenListBaseURL = (chainId: number) =>
-  `https://tokens.pancakeswap.finance/images/${chainName[chainId]}`;
+  `https://raw.githubusercontent.com/fiwallets/token-list/main/lists/images/${chainName[chainId]}`;
 
 export const getTokenListTokenUrl = (token: Token) =>
   chainName[token.chainId]
-    ? `https://tokens.pancakeswap.finance/images/${
+    ? `https://raw.githubusercontent.com/fiwallets/token-list/main/lists/${
         token.chainId === ChainId.BSC ? "" : `${chainName[token.chainId]}/`
       }${token.address}.png`
     : null;

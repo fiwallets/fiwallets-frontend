@@ -11,7 +11,7 @@ export const supportedChainIdV3 = [
   ChainId.FDAX
 ] as const
 // export const bCakeSupportedChainId = [ChainId.BSC] as const
-export const bCakeSupportedChainId = [ChainId.FDAX] as const
+export const bCakeSupportedChainId = [ChainId.BSC] as const
 
 export const FARM_AUCTION_HOSTING_IN_SECONDS = 691200
 
@@ -22,7 +22,7 @@ export type FarmV3SupportedChainId = (typeof supportedChainIdV3)[number]
 export const masterChefAddresses = {
   [ChainId.BSC_TESTNET]: '0xB4A466911556e39210a6bB2FaECBB59E4eB7E43d',
   [ChainId.BSC]: '0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652',
-  [ChainId.FDAX]: '0x9a9F76bcf72600831BB0EA181338B1eE7eB9c285',
+  [ChainId.FDAX]: '0x668F53B8027064f1da41cA917D5e799902508cfB',
 } as const
 
 export const masterChefV3Addresses = {
@@ -32,7 +32,7 @@ export const masterChefV3Addresses = {
   [ChainId.BSC_TESTNET]: '0x4c650FB471fe4e0f476fD3437C3411B1122c4e3B',
   [ChainId.ZKSYNC_TESTNET]: '0x3c6Aa61f72932aD5D7C917737367be32D5509e6f',
   [ChainId.POLYGON_ZKEVM_TESTNET]: '0xb66b07590B30d4E6E22e45Ddc83B06Bb018A7B44',
-  [ChainId.FDAX]: '0x5587d748b78327Aec0Ef57AEe0d3034f32c116BA',
+  [ChainId.FDAX]: '0x153b641435606C87663fF232F03EED708B730c14',
 } as const satisfies Record<FarmV3SupportedChainId, string>
 
 export const nonBSCVaultAddresses = {

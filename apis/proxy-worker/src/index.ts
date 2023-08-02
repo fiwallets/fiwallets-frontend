@@ -7,7 +7,7 @@ const _corsHeaders = `referer, origin, content-type, x-sf`
 
 const router = Router()
 
-router.post('/exhange-fdax', async (request, _, headers: Headers) => {
+router.post('/exchange-fdax', async (request, _, headers: Headers) => {
   const ip = headers.get('X-Forwarded-For') || headers.get('Cf-Connecting-Ip') || ''
   const isLocalHost = headers.get('origin') === 'http://localhost:4000'
   const body = (await request.text?.()) as any
@@ -17,7 +17,7 @@ router.post('/exhange-fdax', async (request, _, headers: Headers) => {
   const response = await fetch(NODE_REAL_DATA_ENDPOINT, {
     headers: {
       'X-Forwarded-For': ip,
-      origin: isLocalHost ? 'https://miexx.com' : headers.get('origin') || '',
+      origin: isLocalHost ? 'https://demo.miexs.com' : headers.get('origin') || '',
     },
     body,
     method: 'POST',

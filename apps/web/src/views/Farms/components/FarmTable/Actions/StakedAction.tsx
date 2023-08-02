@@ -218,7 +218,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
             {
               step: 2,
               tx: '',
-              chainId: ChainId.BSC,
+              chainId: ChainId.FDAX,
               status: FarmTransactionStatus.PENDING,
             },
           ],

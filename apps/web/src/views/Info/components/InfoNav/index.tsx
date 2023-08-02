@@ -22,8 +22,44 @@ import { useMultiChainPath, useChainNameByQuery, useChainIdByQuery } from 'state
 import { multiChainId, multiChainPaths } from 'state/info/constant'
 import { chains } from 'utils/wagmi'
 import { ChainLogo } from 'components/Logo/ChainLogo'
-import { bsc, mainnet, polygonZkEvm } from 'wagmi/chains'
+import { bsc, mainnet, polygonZkEvm, Chain} from 'wagmi/chains'
 import { ASSET_CDN } from 'config/constants/endpoints'
+
+export const fdax = {
+  id: 2006,
+  name: "FDAX Smart Chain",
+  network: "fdax",
+  nativeCurrency: {
+      decimals: 18,
+      name: "FDX",
+      symbol: "FDX",
+  },
+  rpcUrls: {
+      default: {
+          http:  ["https://mainnet-rpc.5dax.com"],
+     },
+      public: {
+          http:  ["https://mainnet-rpc.5dax.com"],
+     },
+  },
+  blockExplorers: {
+      etherscan: {
+          name: "FdaxScan",
+          url: "https://scan.5dax.com",
+     },
+      default: {
+          name: "FdaxScan",
+          url: "https://scan.5dax.com",
+     },
+  },
+  contracts: {
+      multicall3: {
+          address: "0x85C163aAeb2ecfA61Ea6D6f1b525e091A94aDB33",
+          blockCreated: 1_651_639,
+     },
+  },
+} as const satisfies Chain
+
 
 const NavWrapper = styled(Flex)`
   background: ${({ theme }) => theme.colors.gradientCardHeader};
@@ -95,7 +131,7 @@ const InfoNav: React.FC<{ isStableSwap: boolean }> = ({ isStableSwap }) => {
   )
 }
 
-const targetChains = [mainnet, bsc, polygonZkEvm]
+const targetChains = [mainnet, bsc, polygonZkEvm, fdax]
 
 export const NetworkSwitcher: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
   const { t } = useTranslation()

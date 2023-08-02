@@ -3,10 +3,10 @@ import { ChainId, ERC20Token } from '@pancakeswap/sdk'
 // FDAX
 export const CAKE_FDAX = new ERC20Token(
   ChainId.FDAX,
-  '0x4B96c9c245E3b852Bc071f53C81f0412eCdD26ac',
+  '0xC4610d97c89E9d8326fb6A536f41A12580C12204',
   18,
-  'MIEXX',
-  'MiexxSwap Token',
+  'Miexs',
+  'MiexsSwap Token',
   'https://pancakeswap.finance/',
 )
 

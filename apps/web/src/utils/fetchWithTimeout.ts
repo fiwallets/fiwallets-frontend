@@ -3,8 +3,7 @@ interface FetchTimeoutOptions extends RequestInit {
 }
 
 const fetchWithTimeout = (url, options: FetchTimeoutOptions = {}): Promise<Response> => {
-  const { timeout = 10000, ...fetchOptions } = options
-
+  const { timeout = 10000, ...fetchOptions } = options  
   return Promise.race([
     fetch(url, fetchOptions),
     new Promise((_, reject) => {

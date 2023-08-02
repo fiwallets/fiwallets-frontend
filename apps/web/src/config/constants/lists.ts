@@ -5,7 +5,7 @@ export const PANCAKE_ETH_MM = 'https://tokens.pancakeswap.finance/pancakeswap-et
 export const PANCAKE_BSC_MM = 'https://tokens.pancakeswap.finance/pancakeswap-bnb-mm.json'
 export const COINGECKO_ETH = 'https://tokens.coingecko.com/uniswap/all.json'
 export const CMC = 'https://tokens.pancakeswap.finance/cmc.json'
-export const PANCAKE_FDAX_DEFAULT = 'https://raw.githubusercontent.com/fiwallets/token-list/fdax/fdax-default.json'
+export const PANCAKE_FDAX_DEFAULT = 'https://raw.githubusercontent.com/fiwallets/token-list-draft/fdax/fdax-default.json'
 
 export const ETH_URLS = [PANCAKE_ETH_DEFAULT, PANCAKE_ETH_MM, COINGECKO_ETH]
 export const BSC_URLS = [PANCAKE_EXTENDED, CMC, COINGECKO, PANCAKE_BSC_MM]

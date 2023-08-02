@@ -278,6 +278,7 @@ export const useGetChainName = () => {
 
   const getChain = useCallback(() => {
     if (pathname.includes('eth') || query.chain === 'eth') return 'ETH'
+    if (pathname.includes('fdax') || query.chain === 'fdax') return 'FDAX'
     return 'BSC'
   }, [pathname, query])
   const [name, setName] = useState<MultiChainName | null>(() => getChain())
@@ -294,6 +295,7 @@ export const useChainNameByQuery = (): MultiChainName => {
   const { query } = useRouter()
   const chainName = useMemo(() => {
     if (query?.chainName === 'eth') return 'ETH'
+    if (query?.chainName === 'fdax') return 'FDAX'
     if (query?.chainName === 'polygon-zkevm') return 'POLYGON_ZKEVM'
     return 'BSC'
   }, [query])
