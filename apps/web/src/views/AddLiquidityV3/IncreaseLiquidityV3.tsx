@@ -48,7 +48,7 @@ export default function IncreaseLiquidityV3({ currencyA: baseCurrency, currencyB
   const router = useRouter()
   const { sendTransactionAsync } = useSendTransaction()
   const [attemptingTxn, setAttemptingTxn] = useState<boolean>(false) // clicked confirm
-
+  console.log('router.query.currency', router.query.currency)
   const [, , feeAmountFromUrl, tokenId] = router.query.currency || []
 
   const {
@@ -64,6 +64,7 @@ export default function IncreaseLiquidityV3({ currencyA: baseCurrency, currencyB
     masterchefV3?.address,
     account,
   )
+  console.log('stakedTokenIds', stakedTokenIds)
 
   const [txHash, setTxHash] = useState<string>('')
 
@@ -85,6 +86,8 @@ export default function IncreaseLiquidityV3({ currencyA: baseCurrency, currencyB
     baseCurrency && currencyB && baseCurrency.wrapped.equals(currencyB.wrapped) ? undefined : currencyB
   // mint state
   const formState = useV3FormState()
+  console.log('formState', formState)
+
   const { independentField, typedValue } = formState
 
   const {
@@ -132,8 +135,10 @@ export default function IncreaseLiquidityV3({ currencyA: baseCurrency, currencyB
 
   const positionManager = useV3NFTPositionManagerContract()
   const [allowedSlippage] = useUserSlippage() // custom from users
+  console.log('stakedTokenIds', stakedTokenIds, tokenId)
 
   const isStakedInMCv3 = Boolean(tokenId && stakedTokenIds.find((id) => id === BigInt(tokenId)))
+  console.log('isStakedInMCv3', isStakedInMCv3)
 
   const manager = isStakedInMCv3 ? masterchefV3 : positionManager
   const interfaceManager = isStakedInMCv3 ? MasterChefV3 : NonfungiblePositionManager
@@ -147,13 +152,16 @@ export default function IncreaseLiquidityV3({ currencyA: baseCurrency, currencyB
 
   const onIncrease = useCallback(async () => {
     if (!chainId || !sendTransactionAsync || !account || !interfaceManager || !manager) return
-
+    console.log('onIncrease', tokenIdsInMCv3Loading, positionManager, baseCurrency, quoteCurrency)
     if (tokenIdsInMCv3Loading || !positionManager || !baseCurrency || !quoteCurrency) {
       return
     }
+    console.log('onIncrease', position, account, deadline)
 
     if (position && account && deadline) {
       const useNative = baseCurrency.isNative ? baseCurrency : quoteCurrency.isNative ? quoteCurrency : undefined
+      console.log('useNative', useNative, hasExistingPosition, tokenId)
+
       const { calldata, value } =
         hasExistingPosition && tokenId
           ? interfaceManager.addCallParameters(position, {

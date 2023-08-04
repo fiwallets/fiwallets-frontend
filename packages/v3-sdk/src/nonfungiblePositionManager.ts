@@ -223,7 +223,7 @@ export abstract class NonfungiblePositionManager {
     if (options.token1Permit) {
       calldatas.push(SelfPermit.encodePermit(position.pool.token1, options.token1Permit))
     }
-
+    console.log('calldatas', isMint(options))
     // mint
     if (isMint(options)) {
       const recipient = validateAndParseAddress(options.recipient)

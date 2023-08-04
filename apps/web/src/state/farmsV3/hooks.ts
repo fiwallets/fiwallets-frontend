@@ -254,7 +254,6 @@ const usePositionsByUserFarms = (
   const { tokenIds } = useV3TokenIdsByAccount(positionManager?.address, account)
 
   const uniqueTokenIds = useMemo(() => [...stakedIds, ...tokenIds], [stakedIds, tokenIds])
-
   const { positions } = useV3PositionsFromTokenIds(uniqueTokenIds)
 
   const { tokenIdResults, isLoading: isStakedPositionLoading } = useStakedPositionsByUser(stakedIds)
@@ -262,11 +261,13 @@ const usePositionsByUserFarms = (
   const [unstakedPositions, stakedPositions] = useMemo(() => {
     if (!positions) return [[], []]
     const unstakedIds = tokenIds.filter((id) => !stakedIds.find((s) => s === id))
+
     return [
       unstakedIds.map((id) => positions.find((p) => p.tokenId === id)).filter((p) => p?.liquidity > 0n),
       stakedIds.map((id) => positions.find((p) => p.tokenId === id)).filter((p) => p?.liquidity > 0n),
     ]
   }, [positions, stakedIds, tokenIds])
+  console.log('unstakedPositions', unstakedPositions)
 
   const pendingCakeByTokenIds = useMemo(
     () =>
@@ -285,17 +286,16 @@ const usePositionsByUserFarms = (
     () =>
       farmsV3.map((farm) => {
         const { feeAmount, token0, token1 } = farm
-
         const unstaked = unstakedPositions.filter(
           (p) =>
-            toLower(p.token0) === toLower(token0.address) &&
-            toLower(p.token1) === toLower(token1.address) &&
+          (toLower(p.token0) === toLower(token0.address) || toLower(p.token0) === toLower(token1.address)) &&
+          (toLower(p.token1) === toLower(token1.address) || toLower(p.token1) === toLower(token0.address)) && 
             feeAmount === p.fee,
         )
         const staked = stakedPositions.filter((p) => {
           return (
-            toLower(p.token0) === toLower(token0.address) &&
-            toLower(p.token1) === toLower(token1.address) &&
+            (toLower(p.token0) === toLower(token0.address) || toLower(p.token0) === toLower(token1.address)) &&
+            (toLower(p.token1) === toLower(token1.address) || toLower(p.token1) === toLower(token0.address)) && 
             feeAmount === p.fee
           )
         })

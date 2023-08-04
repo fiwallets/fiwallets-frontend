@@ -24,7 +24,7 @@ export const V3_BSC_INFO_CLIENT = `https://open-platform.nodereal.io/${
   process.env.NEXT_PUBLIC_NODE_REAL_API_INFO || process.env.NEXT_PUBLIC_NODE_REAL_API_ETH
 }/pancakeswap-v3/graphql`
 
-export const INFO_CLIENT_FDAX = 'https://proxy-worker-dev.luannguyen-18c.workers.dev/exchange-fdax'
+export const INFO_CLIENT_FDAX = 'https://api.miexx.com/subgraphs/name/miexxswap/exchange-fdax' //https://proxy-worker-dev.luannguyen-18c.workers.dev
 export const INFO_CLIENT_ETH = 'https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth'
 
 export const BLOCKS_CLIENT_FDAX = 'https://api.miexx.com/subgraphs/name/miexxswap/blocks'

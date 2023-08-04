@@ -147,7 +147,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
 
   const farmV3Multiplier = useFarmV3Multiplier()
   const farmV2Multiplier = useFarmV2Multiplier()
-
+  console.log('FARM TABLE', farms)
   const generateRow = useCallback(
     (farm: V2StakeValueAndV3Farm): RowProps => {
       const { token, quoteToken } = farm

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction, isAnyOf } from '@reduxjs/
 import BigNumber from 'bignumber.js'
 import keyBy from 'lodash/keyBy'
 import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { bscTokens, fdaxTokens } from '@pancakeswap/tokens'
+import { fdaxTokens } from '@pancakeswap/tokens'
 import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
 import { fetchTokenUSDValue } from '@pancakeswap/utils/llamaPrice'
 import {

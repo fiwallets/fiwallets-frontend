@@ -109,12 +109,6 @@ export async function saveFarms(chainId: number, event: ScheduledEvent | FetchEv
     let farmsConfig: SerializedFarmConfig[];
     let lpPriceHelpers: SerializedFarmConfig[] = []
 
-    // if(chainId == ChainId.FDAX){
-    //   farmsConfig = await (await fetch(`https://raw.githubusercontent.com/fiwallets/farm-config/main/2006.json`)).json<SerializedFarmConfig[]>()
-    // }else {
-
-    // }
-
     farmsConfig = await (await fetch(`${farmConfigApi}/${chainId}.json`)).json<SerializedFarmConfig[]>()
     try {
       lpPriceHelpers = await (
